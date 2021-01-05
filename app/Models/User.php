@@ -1,4 +1,9 @@
 <?php
+# @Date:   2020-11-03T10:21:46+00:00
+# @Last modified time: 2020-12-14T12:54:45+00:00
+
+
+
 
 namespace App\Models;
 
@@ -40,4 +45,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+public function roles()
+{
+  return $this->belongsToMany('App\Models\Role', 'user_role');
+}
+
+public function authorizeRoles($roles)
+{
+  if(is_array($roles)){
+return $this->hasAnyRole($roles);
+  }
+  return $this->hasRole($roles);
+}
+
+public function hasAnyRole($roles)
+{
+return null !== $this->roles()->whereIn('name', $roles)->first();
+}
+
+public function hasRole($role)
+{
+return null !== $this->roles()->where('name', $role)->first();
+}
+public function profile(){
+  return $this->belongsTo(User::class);
+}
 }
