@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-03T10:21:46+00:00
-# @Last modified time: 2021-01-05T16:49:23+00:00
+# @Last modified time: 2021-01-08T10:51:16+00:00
 
 
 
@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
       $this->call(RoleSeeder::class);
+      $this->call(GenderSeeder::class);
+      $this->call(RelationshipSeeder::class);
+      $this->call(SignSeeder::class);
       $this->call(UserSeeder::class);
     }
 }
