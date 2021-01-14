@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:47:55+00:00
-# @Last modified time: 2020-12-14T12:16:57+00:00
+# @Last modified time: 2021-01-14T11:54:38+00:00
 
 
 
@@ -20,11 +20,11 @@ class CreateGenderProfileTable extends Migration
     {
         Schema::create('gender_profile', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('gender_id');
-            $table->unsignedBigInteger('profile_id');
+            $table->bigInteger('gender_id')->unsigned();
+            $table->bigInteger('profile_id')->unsigned();
             $table->timestamps();
-            $table->foreign('gender_id')->references('id')->on('genders');
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('gender_id')->references('id')->on('genders')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -35,6 +35,6 @@ class CreateGenderProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gender_user');
+        Schema::dropIfExists('gender_profile');
     }
 }

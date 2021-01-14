@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T12:17:30+00:00
-# @Last modified time: 2020-12-14T12:18:48+00:00
+# @Last modified time: 2021-01-14T11:57:28+00:00
 
 
 
@@ -20,11 +20,11 @@ class CreateProfileSignTable extends Migration
     {
         Schema::create('profile_sign', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sign_id');
-            $table->unsignedBigInteger('profile_id');
+            $table->bigInteger('sign_id')->unsigned();
+            $table->bigInteger('profile_id')->unsigned();
             $table->timestamps();
-            $table->foreign('sign_id')->references('id')->on('signs');
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('sign_id')->references('id')->on('signs')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 

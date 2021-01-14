@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:46:11+00:00
-# @Last modified time: 2020-12-14T12:29:21+00:00
+# @Last modified time: 2021-01-14T12:00:34+00:00
 
 
 
@@ -20,11 +20,11 @@ class CreateProfileRelationshipTable extends Migration
     {
         Schema::create('profile_relationship', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('relationship_id');
-            $table->unsignedBigInteger('profile_id');
+            $table->bigInteger('relationship_id')->unsigned();
+            $table->bigInteger('profile_id')->unsigned();
             $table->timestamps();
-            $table->foreign('relationship_id')->references('id')->on('relationships');
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('relationship_id')->references('id')->on('relationships')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -35,6 +35,6 @@ class CreateProfileRelationshipTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('relationship_user');
+        Schema::dropIfExists('profile_relationship');
     }
 }
