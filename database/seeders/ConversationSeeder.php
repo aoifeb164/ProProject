@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-14T12:23:42+00:00
-# @Last modified time: 2021-01-14T15:39:11+00:00
+# @Last modified time: 2021-01-15T10:21:57+00:00
 
 
 
@@ -20,48 +20,30 @@ class ConversationSeeder extends Seeder
      */
     public function run()
     {
-      $conversation = new Conversation();
-      $conversation->title ='hello';
-      $conversation->sender_id = Profile::all()->random(1)->first()->id;
-      $conversation->recipient_id = Profile::all()->random(1)->first()->id;
-      $conversation->save();
 
-      $message = new message();
-      $message->message ='hello, saw your profile and thought i would send a message';
-      $message->Conversation_id = $conversation->id;
-      $message->save();
+      $faker = \Faker\Factory::create();
 
-      $conversation = new Conversation();
-      $conversation->title ='how you doing?';
-      $conversation->sender_id = Profile::all()->random(1)->first()->id;
-      $conversation->recipient_id = Profile::all()->random(1)->first()->id;
-      $conversation->save();
+      $numConversations = rand(10,20);
+      for ($j = 0; $j != $numConversations; $j++){
+        $conversation = new Conversation();
+        $conversation->title = $faker->realText(20);
+        $conversation->sender_id = Profile::all()->random(1)->first()->id;
+        $conversation->recipient_id = Profile::all()->random(1)->first()->id;
+        while ($conversation->sender_id === $conversation->recipient_id){
+          $conversation->recipient_id = Profile::all()->random(1)->first()->id;
+        }
+        $conversation->save();
 
-      $message = new message();
-      $message->message ='hello, how are you doing?';
-      $message->Conversation_id = $conversation->id;
-      $message->save();
+        $numMessages = rand(1,5);
 
-      $conversation = new Conversation();
-      $conversation->title ='where are you from?';
-      $conversation->sender_id = Profile::all()->random(1)->first()->id;
-      $conversation->recipient_id = Profile::all()->random(1)->first()->id;
-      $conversation->save();
+        for ($i = 0; $i != $numMessages; $i++){
+          $numParagraphs = rand(1,5);
+          $message = new message();
+          $message->message = $faker->paragraph($numParagraphs);
+          $message->Conversation_id = $conversation->id;
+          $message->save();
+        }
+      }
 
-      $message = new message();
-      $message->message ='where are you from?';
-      $message->Conversation_id = $conversation->id;
-      $message->save();
-
-      $conversation = new Conversation();
-      $conversation->title ='whats your favourite colour?';
-      $conversation->sender_id = Profile::all()->random(1)->first()->id;
-      $conversation->recipient_id = Profile::all()->random(1)->first()->id;
-      $conversation->save();
-
-      $message = new message();
-      $message->message ='whats your favourite colour? mines yellow :)';
-      $message->Conversation_id = $conversation->id;
-      $message->save();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:51:28+00:00
-# @Last modified time: 2020-12-14T11:52:43+00:00
+# @Last modified time: 2021-01-15T10:24:05+00:00
 
 
 
@@ -20,7 +20,7 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-              $table->string('message');
+              $table->text('message');
               $table->unsignedBigInteger('conversation_id');
               $table->timestamps();
               $table->foreign('conversation_id')->references('id')->on('conversations');

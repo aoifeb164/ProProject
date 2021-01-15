@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:57:10+00:00
-# @Last modified time: 2021-01-14T12:18:13+00:00
+# @Last modified time: 2021-01-15T11:01:29+00:00
 
 
 
@@ -38,10 +38,10 @@ class Profile extends Model
       return $this->belongsTo(User::class);
     }
     public function started(){
-      return $this->belongsTo(Conversation::class,'sender_id');
+      return $this->hasMany(Conversation::class,'sender_id');
     }
     public function joined(){
-      return $this->belongsTo(Conversation::class,'recipient_id');
+      return $this->hasMany(Conversation::class,'recipient_id');
     }
 
 }
