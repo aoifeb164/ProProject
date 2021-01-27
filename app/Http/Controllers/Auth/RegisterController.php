@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:54:28+00:00
-# @Last modified time: 2020-11-06T15:21:12+00:00
+# @Last modified time: 2021-01-27T15:16:17+00:00
 
 
 
@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'dob' => ['required', 'date', 'date_format:Y-m-d'],
         ]);
     }
 
@@ -74,6 +75,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'dob' => $data['dob'],
         ]);
 
         $user->roles()->attach(Role::where('name', 'user')->first());
