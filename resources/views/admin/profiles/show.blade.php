@@ -38,11 +38,11 @@
 
                       {{-- creating back, edit and delete button --}}
                     <a href="{{ route('admin.profiles.index') }}" class="btn btn-default">Back</a>
-                    {{-- <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Edit</a>
-                    <form style="display:inline-block" method="POST" action="{{ route('admin.profiles.destroy', $profile->id ) }}"> --}}
+                    {{-- <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Edit</a> --}}
+                    <form style="display:inline-block" method="POST" action="">
                       <input type="hidden" name="_method" value="DELETE">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <button type="submit" class="form-control btn btn-danger">Delete</a>
+                      <button type="button" class="form-control btn btn-danger">Delete</a>
                     </form>
                 </div>
             </div>

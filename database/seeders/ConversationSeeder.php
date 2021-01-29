@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-14T12:23:42+00:00
-# @Last modified time: 2021-01-15T10:21:57+00:00
+# @Last modified time: 2021-01-29T10:16:53+00:00
 
 
 
@@ -41,6 +41,8 @@ class ConversationSeeder extends Seeder
           $message = new message();
           $message->message = $faker->paragraph($numParagraphs);
           $message->Conversation_id = $conversation->id;
+          if (rand(1,2) ===1) $message->sender_id=$conversation->sender_id;
+          else $message->sender_id=$conversation->recipient_id;
           $message->save();
         }
       }
