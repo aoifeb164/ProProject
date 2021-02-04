@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:00:54+00:00
-# @Last modified time: 2021-01-29T10:34:57+00:00
+# @Last modified time: 2021-02-04T10:31:31+00:00
 
 
 namespace Database\Seeders;
@@ -44,6 +44,7 @@ class UserSeeder extends Seeder
         $profile = new Profile();
         $profile->bio = $faker->paragraph(3);
         $profile->dob = $faker->date('Y-m-d', '2003-01-01');
+        $profile->location = 'Louth';
         $profile->user_id = $user->id;
         $profile->gender_id = Gender::all()->random(1)->first()->id;
         $profile->sign_id = Sign::all()->random(1)->first()->id;
@@ -64,6 +65,7 @@ class UserSeeder extends Seeder
           $profile = new Profile();
           $profile->bio = $faker->paragraph(3);
           $profile->dob = $faker->date('Y-m-d', '2003-01-01');
+          $profile->location = 'Dublin';
           $profile->user_id = $user->id;
           $profile->gender_id = Gender::all()->random(1)->first()->id;
           $profile->sign_id = Sign::all()->random(1)->first()->id;
