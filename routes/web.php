@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-03T10:21:46+00:00
-# @Last modified time: 2021-01-27T15:49:48+00:00
+# @Last modified time: 2021-02-04T16:12:01+00:00
 
 
 
@@ -8,7 +8,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 
-use App\Http\Controllers\User\BookController as UserBookController;
+use App\Http\Controllers\User\ProfileController as UserProfileController;
+use App\Http\Controllers\User\MatchesController as UserMatchesController;
+use App\Http\Controllers\User\ConversationController as UserConversationController;
+
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
 use App\Http\Controllers\User\HomeController as UserHomeController;
@@ -43,3 +46,10 @@ Route::get('/admin/profiles/{id}', [AdminProfileController::class, 'show'])->nam
 // Route::get('/admin/profiles/{id}/edit', [AdminProfileController::class, 'edit'])->name('admin.profiles.edit');
 // Route::put('/admin/profiles{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
 Route::delete('/admin/profiles/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profiles.destroy');
+
+Route::get('/user/profiles/{id}', [UserProfileController::class, 'show'])->name('user.profiles.show');
+
+Route::get('/user/matches', [UserMatchesController::class, 'index'])->name('user.matches.index');
+
+Route::get('/user/conversations', [UserConversationController::class, 'index'])->name('user.messages.index');
+Route::get('/user/messages', [UserConversationController::class, 'index'])->name('user.messages.show');

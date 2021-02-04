@@ -1,21 +1,22 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-04T10:36:44+00:00
+# @Last modified time: 2021-02-04T13:36:03+00:00
 
 
 
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //calling the paient, user and insurance company models
-use App\Models\Profile;
+use App\Models\Conversation;
 use App\Models\Sign;
 use App\Models\Gender;
+use App\Models\Profile;
 use App\Models\User;
 
-class ProfileController extends Controller
+class ConversationController extends Controller
 {
 
       /**
@@ -26,7 +27,7 @@ class ProfileController extends Controller
       public function __construct()
       {
           $this->middleware('auth');
-          $this->middleware('role:admin');
+          $this->middleware('role:user');
       }
     /**
      * Display a listing of the resource.
@@ -34,12 +35,12 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-      //when requesting the index page display the profiles index and get all the profiles from the profiles table
+      //when requesting the index page display the conversations index and get all the conversations from the conversations table
       public function index()
       {
-      $profiles = Profile::all();
-      return view('admin.profiles.index', [
-     'profiles' => $profiles
+      $conversations = Conversation::all();
+      return view('user.messages.index', [
+     'conversations' => $conversations
       ]);
 
     }
@@ -50,7 +51,7 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when on the add profile page display the profiles create form page
+     //when on the add conversation page display the conversations create form page
     public function create()
     {
 
@@ -63,7 +64,7 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-   //when storing a new profile the fields are validated by making sure they have entered data and inputed using correct information format
+   //when storing a new conversation the fields are validated by making sure they have entered data and inputed using correct information format
     public function store(Request $request)
     {
 
@@ -76,13 +77,13 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when requesting the show profile page display the profiles show page and get the profile by id from the profiles table
+     //when requesting the show conversation page display the conversations show page and get the conversation by id from the conversations table
     public function show($id)
     {
-      //find the profile by id
-      $profile = Profile::findOrFail($id);
-      return view('admin.profiles.show', [
-        'profile' => $profile
+      //find the conversation by id
+      $message = Message::findOrFail($id);
+      return view('user.messages.show', [
+        'message' => $message
       ]);
     }
 
@@ -93,18 +94,10 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when requesting to edit a profile display the profile edit page and get the profile by id from the profiles table
+     //when requesting to edit a conversation display the conversation edit page and get the conversation by id from the conversations table
     public function edit($id)
     {
-      //find the profile by id
-      $profile = Profile::findOrFail($id);
-      $genders = Gender::all();
-      $signs = Sign::all();
-      return view('admin.profiles.edit', [
-        'profile' => $profile,
-        'gender_id' => $genders,
-        'sign_id' => $signs
-      ]);
+
     }
 
     /**
@@ -115,7 +108,7 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when updating a new profile the fields are validated by making sure they have inputed and they are using correct information format
+     //when updating a new conversation the fields are validated by making sure they have inputed and they are using correct information format
     public function update(Request $request, $id)
     {
 
@@ -128,14 +121,14 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //when deleting a profile get them by id in the profiles table and redirect back to profile index page
+    //when deleting a conversation get them by id in the conversations table and redirect back to conversation index page
     public function destroy(Request $request, $id)
     {
-        $profile = Profile::findOrFail($id);
-        $profile->delete();
+        $conversation = Conversation::findOrFail($id);
+        $conversation->delete();
 
         //message to appear when a doctor has been deleted
-        // $request->session()->flash('danger', 'Profile deleted successfully!');
-        return redirect()->route('admin.profiles.index');
+        // $request->session()->flash('danger', 'Conversation deleted successfully!');
+        return redirect()->route('user.conversations.index');
     }
 }

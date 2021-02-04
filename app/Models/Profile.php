@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:57:10+00:00
-# @Last modified time: 2021-01-15T11:01:29+00:00
+# @Last modified time: 2021-02-04T15:17:40+00:00
 
 
 
@@ -43,5 +43,11 @@ class Profile extends Model
     public function joined(){
       return $this->hasMany(Conversation::class,'recipient_id');
     }
+    // public function matches(){
+    //   return $this->hasMany(Match::class,'matcher_id');
+    // }
+    // public function match(){
+    //   return $this->hasMany(Match::class,'matcher_id');
+    // }
 
 }

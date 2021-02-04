@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:40:39+00:00
-# @Last modified time: 2021-01-08T10:59:58+00:00
+# @Last modified time: 2021-02-04T16:16:01+00:00
 
 
 
@@ -22,6 +22,7 @@ class CreateProfilesTable extends Migration
             $table->id();
               $table->text('bio');
               $table->date('dob');
+              $table->text('location');
               $table->unsignedBigInteger('user_id');
               $table->unsignedBigInteger('gender_id');
               $table->unsignedBigInteger('sign_id');
