@@ -12,7 +12,7 @@
 
                           <tr>
                               {{-- <td>{{ $profile->photo->filename }}</td> --}}
-                              <img src="{{url('/images/profiles/profile_01.png')}}"/>
+                              <img src="{{url ('/'. $profile->photo->filename)}}"/>
                           </tr>
                             <tr>
                                 <td>{{ $profile->user->name }}</td>

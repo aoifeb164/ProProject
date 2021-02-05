@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:54:28+00:00
-# @Last modified time: 2021-02-04T16:21:32+00:00
+# @Last modified time: 2021-02-05T11:56:53+00:00
 
 
 
@@ -86,14 +86,16 @@ class RegisterController extends Controller
         ]);
 
         $user->roles()->attach(Role::where('name', 'user')->first());
-        return $user;;
 
         $profile = Profile::create([
             'bio' => $data['bio'],
             'dob' => $data['dob'],
             'location' => $data['location'],
+            'user_id' => $user->id,
             'gender_id' => $data['gender_id'],
-            'sign_id' => $data['gender_id']
+            'sign_id' => $data['gender_id'],
+            'photo_id'=>2
         ]);
+        return $user;;
     }
 }

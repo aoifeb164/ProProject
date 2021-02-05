@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:57:10+00:00
-# @Last modified time: 2021-02-04T15:17:40+00:00
+# @Last modified time: 2021-02-05T12:07:22+00:00
 
 
 
@@ -13,6 +13,16 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+    protected $fillable = [
+      'bio',
+      'dob',
+      'location' ,
+      'user_id',
+      'gender_id' ,
+      'sign_id',
+      'photo_id'
+    ];
+
     public function photos(){
       return $this->hasMany(Photo::class);
     }

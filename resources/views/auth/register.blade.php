@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+  <pre>{{$errors}}</pre>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -99,7 +100,7 @@
                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                            <div class="col-md-6">
-                               <input id="gender_id" type="gender" class="form-control" name="gender" required autocomplete="gender">
+                               <input id="gender_id" type="gender" class="form-control" name="gender_id" required autocomplete="gender">
                            </div>
                        </div>
 
@@ -107,7 +108,7 @@
                             <label for="sign" class="col-md-4 col-form-label text-md-right">{{ __('Sign') }}</label>
 
                             <div class="col-md-6">
-                                <input id="sign_id" type="sign" class="form-control" name="sign" required autocomplete="sign">
+                                <input id="sign_id" type="sign" class="form-control" name="sign_id" required autocomplete="sign">
                             </div>
                         </div>
 
