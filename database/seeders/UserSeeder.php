@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:00:54+00:00
-# @Last modified time: 2021-02-04T16:15:10+00:00
+# @Last modified time: 2021-02-10T14:37:37+00:00
 
 
 namespace Database\Seeders;
@@ -74,6 +74,8 @@ class UserSeeder extends Seeder
           $profile->photo_id = null;
           $profile->save();
         }
+
+        
 
         // for ($i = 1; $i <=30; $i++) {
         //   $User = User::factory()->create();

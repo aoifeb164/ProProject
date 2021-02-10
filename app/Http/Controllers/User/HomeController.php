@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T14:07:54+00:00
-# @Last modified time: 2020-11-16T12:38:07+00:00
+# @Last modified time: 2021-02-10T14:55:37+00:00
 
 
 
@@ -9,7 +9,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Profile;
 class HomeController extends Controller
 {
     /**
@@ -30,6 +30,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.home');
+      $profiles = Profile::all();
+      return view('user.home', [
+     'profiles' => $profiles
+          ]);
     }
 }

@@ -36,8 +36,7 @@
                       <a class="nav-link" href="{{ route('user.home') }}">{{ __('Home') }}</a>
                       <a class="nav-link" href="{{ route('user.messages.index') }}">{{ __('Inbox') }}</a>
                       <a class="nav-link" href="{{ route('user.matches.index') }}">{{ __('Matches') }}</a>
-                        {{-- <a class="nav-link" href="{{ route('user.profiles.index') }}">{{ __('Profile') }}</a> --}}
-
+                      {{-- <a class="nav-link" href="{{ route('user.profiles.show') }}">{{ __('Profile') }}</a> --}}
 
                     </ul>
 
