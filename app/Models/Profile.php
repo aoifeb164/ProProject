@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:57:10+00:00
-# @Last modified time: 2021-02-10T15:20:38+00:00
+# @Last modified time: 2021-02-12T11:10:53+00:00
 
 
 
@@ -9,7 +9,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+// use App\Models\Match;
 class Profile extends Model
 {
     use HasFactory;
@@ -53,11 +53,12 @@ class Profile extends Model
     public function joined(){
       return $this->hasMany(Conversation::class,'recipient_id');
     }
-    public function matches(){
-      return $this->hasMany(Match::class,'matcher_id');
+    public function matches_recieved(){
+      return $this->belongsToMany(Profile::class,'matches','matchee_id','matcher_id')->withPivot('status');
     }
-    public function match(){
-      return $this->belongsToMany(Match::class,'matchee_id');
+    public function matches_sent(){
+      return $this->belongsToMany(Profile::class,'matches','matcher_id','matchee_id')->withPivot('status');
     }
+
 
 }

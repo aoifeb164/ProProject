@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-10T14:56:47+00:00
+# @Last modified time: 2021-02-12T11:33:40+00:00
 
 
 
@@ -11,9 +11,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //calling the paient, user and insurance company models
 use App\Models\Profile;
-use App\Models\Sign;
-use App\Models\Gender;
-use App\Models\User;
 
 class MatchesController extends Controller
 {
@@ -37,9 +34,9 @@ class MatchesController extends Controller
       //when requesting the index page display the profiles index and get all the profiles from the profiles table
       public function index()
       {
-      $profiles = Profile::all();
+      $profile_matchee = Profile::all();
       return view('user.matches.index', [
-     'profiles' => $profiles
+     'profiles' => $profile_matchee
       ]);
 
     }
@@ -81,7 +78,7 @@ class MatchesController extends Controller
     {
       //find the profile by id
       $profile = Profile::findOrFail($id);
-      return view('user.matches.show', [
+      return view('user.profiles.show', [
         'profile' => $profile
       ]);
     }

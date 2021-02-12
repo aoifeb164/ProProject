@@ -31,7 +31,7 @@
               <td>{{ $profile->sign->title}}</td>
               <td>
                   {{-- creating a view, edit and delete button --}}
-                <a href="{{ route('user.profiles.show', $profile->id) }}" class="btn btn-primary">View Profile</a>
+                <a href="{{ route('user.profiles.index', $profile->id) }}" class="btn btn-primary">View Profile</a>
 
                 </td>
               </tr>

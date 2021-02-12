@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-02-04T14:40:53+00:00
-# @Last modified time: 2021-02-04T14:42:28+00:00
+# @Last modified time: 2021-02-12T10:07:40+00:00
 
 
 
@@ -22,6 +22,7 @@ class CreateMatchesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('matcher_id');
             $table->unsignedBigInteger('matchee_id');
+            $table->enum('status', ['pending', 'accepted', 'rejected']);
             $table->timestamps();
             $table->foreign('matcher_id')->references('id')->on('profiles');
             $table->foreign('matchee_id')->references('id')->on('profiles');
