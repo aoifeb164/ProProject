@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-04T13:36:03+00:00
+# @Last modified time: 2021-02-18T20:03:15+00:00
 
 
 
@@ -42,6 +42,15 @@ class ConversationController extends Controller
       return view('user.messages.index', [
      'conversations' => $conversations
       ]);
+
+      // $user = Auth::user();
+      //
+      // //display only the patient who is logged in visits and order by date
+      // $visits = $user->patient->visits()->orderBy('date', 'asc')->paginate(8);
+      //
+      // return view('patient.visits.index', [
+      //   'visits' => $visits
+      // ]);
 
     }
 
