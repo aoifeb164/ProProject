@@ -32,6 +32,12 @@
               <td>
                   {{-- creating a view, edit and delete button --}}
                 <a href="{{ route('user.profiles.show', $profile->id) }}" class="btn btn-primary">View Profile</a>
+                  <a href="{{ route('user.conversations.create') }}" class="btn btn-primary">Message</a>
+                  <form style="display:inline-block" method="POST" action="{{ route('user.matches.destroy', $profile->id ) }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="form-control btn btn-danger">Unmatch</a>
+                        </form>
 
                 </td>
               </tr>

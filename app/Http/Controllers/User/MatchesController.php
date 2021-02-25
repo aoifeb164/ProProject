@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-18T18:56:28+00:00
+# @Last modified time: 2021-02-25T16:50:49+00:00
 
 
 
@@ -120,8 +120,8 @@ class MatchesController extends Controller
     //when deleting a profile get them by id in the profiles table and redirect back to profile index page
     public function destroy(Request $request, $id)
     {
-        $profile = Profile::findOrFail($id);
-        $profile->delete();
+        $profile_matchee = Profile::findOrFail($id);
+        $profile_matchee->delete();
 
         //message to appear when a doctor has been deleted
         // $request->session()->flash('danger', 'Profile deleted successfully!');

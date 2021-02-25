@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-12T12:05:12+00:00
+# @Last modified time: 2021-02-25T16:02:05+00:00
 
 
 
@@ -103,13 +103,15 @@ class ProfileController extends Controller
     public function edit($id)
     {
       //find the profile by id
+      $users = User::all();
       $profile = Profile::findOrFail($id);
       $genders = Gender::all();
       $signs = Sign::all();
       return view('user.profiles.edit', [
+        'users' => $users,
         'profile' => $profile,
-        'gender_id' => $genders,
-        'sign_id' => $signs
+        'genders' => $genders,
+        'signs' => $signs
       ]);
     }
 
@@ -124,7 +126,37 @@ class ProfileController extends Controller
      //when updating a new profile the fields are validated by making sure they have inputed and they are using correct information format
     public function update(Request $request, $id)
     {
+      $request->validate([
+        'name' => 'required|max:191',
+        'email' => 'required|max:191',
 
+
+        'bio' => 'required|max:191',
+        'location' => 'required|max:191',
+        'gender_id' => 'required|max:191',
+        'sign_id' => 'required|max:191'
+
+      ]);
+
+      //saves as a new user and stores the following information in the user table
+      $user = User::findOrFail($id);
+      $user->name = $request->input('name');
+      $user->email = $request->input('email');
+      $user->save();
+
+      //saves as a new patient and stores the following in the patients table
+      $profile = Profile::findOrFail($id);
+      $profile->bio = $request->input('bio');
+      $profile->location = $request->input('location');
+      $profile->gender_id = $request->input('gender_id');
+      $profile->sign_id = $request->input('sign_id');
+      $profile->save();
+
+      //message to appear when a doctor has been edited
+      // $request->session()->flash('info', 'Profile edited successfully!');
+
+      //when the patient has been stored redirect back to the index page
+      return redirect()->route('user.profile.show');
     }
 
     /**
@@ -142,6 +174,6 @@ class ProfileController extends Controller
 
         //message to appear when a doctor has been deleted
         // $request->session()->flash('danger', 'Profile deleted successfully!');
-        return redirect()->route('user.profiles.index');
+        return redirect()->route('/');
     }
 }

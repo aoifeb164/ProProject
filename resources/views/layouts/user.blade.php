@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -33,10 +35,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                      <a class="nav-link" href="{{ route('user.home') }}">{{ __('Home') }}</a>
-                      <a class="nav-link" href="{{ route('user.messages.index') }}">{{ __('Inbox') }}</a>
-                      <a class="nav-link" href="{{ route('user.matches.index') }}">{{ __('Matches') }}</a>
-                      {{-- <a class="nav-link" href="{{ route('user.profiles.show') }}">{{ __('Profile') }}</a> --}}
+                        <a class="nav-link" href="{{ route('user.home') }}">{{ __('Home') }}</a>
+                        <a class="nav-link" href="{{ route('user.conversations.index') }}">{{ __('Inbox') }}</a>
+                        <a class="nav-link" href="{{ route('user.matches.index') }}">{{ __('Matches') }}</a>
+                        {{-- <a class="nav-link" href="{{ route('user.profiles.show', $profile->id) }}">{{ __('Profile') }}</a> --}}
 
                     </ul>
 
@@ -44,35 +46,36 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                        <li class="nav-item dropdown">
+
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                {{-- <a class="nav-link" href="{{ route('user.profiles.edit', $profile->id) }}">{{ __('Settings') }}</a> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -80,25 +83,28 @@
         </nav>
 
         <main class="py-4">
-          <div class="container">
-            <div class="row justify-content-center">
-              <dv class="col-md-12">
-                <div class="flash-message">
-                  @foreach(['danger','warning','success','info'] as $key)
-                  @if(Session::has($key))
-                  <div class="alert alert-{{$key}}">{{ Session::get($key) }}
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  </div>
-                  @endif
-                  @endforeach
+            <div class="container">
+                <div class="row justify-content-center">
+                    <dv class="col-md-12">
+                        <div class="flash-message">
+                            @foreach(['danger','warning','success','info'] as $key)
+                            @if(Session::has($key))
+                            <div class="alert alert-{{$key}}">{{ Session::get($key) }}
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
                 </div>
-                  </div>
-                    </div>
+            </div>
             @yield('content')
         </main>
-      </div>
+    </div>
 </body>
 <script>
-setTimeout(function() {$('.alert').alert('close') }, 3000);
+    setTimeout(function() {
+        $('.alert').alert('close')
+    }, 3000);
 </script>
+
 </html>
