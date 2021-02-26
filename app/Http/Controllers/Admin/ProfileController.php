@@ -8,12 +8,15 @@
 namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 //calling the paient, user and insurance company models
 use App\Models\Profile;
 use App\Models\Sign;
 use App\Models\Gender;
 use App\Models\User;
+use App\Models\InsuranceCompany;
+use Request;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -137,5 +140,37 @@ class ProfileController extends Controller
         //message to appear when a doctor has been deleted
         // $request->session()->flash('danger', 'Profile deleted successfully!');
         return redirect()->route('admin.profiles.index');
+    }
+
+    public function search(){
+      $q = Request::input('q');
+      $users = [];
+
+
+
+
+
+
+      if($q != ' '){
+        $users = DB::table('users')
+      ->leftJoin('profiles','users.id','=','profiles.user_id')
+      ->leftJoin('user_role','users.id','=','user_role.user_id')
+      ->leftJoin('roles','roles.id','=','user_role.role_id')
+      ->where('roles.name','user')
+      ->get();
+
+        $users = User::where('name', 'LIKE', '%' .$q . '%')
+                                ->orWhere('email', 'LIKE', '%' .$q . '%')
+                                ->get();
+
+
+
+      }
+
+      return view('welcome',[
+        "users" => $users,
+        "query" => $q
+      ]);
+
     }
 }

@@ -2,7 +2,9 @@
 # @Date:   2020-11-03T10:21:46+00:00
 # @Last modified time: 2021-02-25T16:17:07+00:00
 
-
+//use App\User;
+use Illuminate\Support\Facades\Request;
+use App\Models\User;
 
 
 use Illuminate\Support\Facades\Route;
@@ -30,6 +32,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/about', [PageController::class, 'about'])->name('about');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -44,6 +47,7 @@ Route::get('/user/profiles/{id}/edit', [UserProfileController::class, 'edit'])->
 // Route::put('/admin/profiles{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
 Route::delete('/admin/profiles/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profiles.destroy');
 
+<<<<<<< HEAD
 Route::get('/user/profiles/{id}', [UserProfileController::class, 'show'])->name('user.profiles.show');
 Route::put('/user/profiles{id}', [UserProfileController::class, 'update'])->name('user.profiles.update');
 Route::delete('/user/profiles/{id}', [UserProfileController::class, 'destroy'])->name('user.profiles.destroy');
@@ -56,3 +60,14 @@ Route::get('/user/conversations', [UserConversationController::class, 'index'])-
 Route::post('/user/messages/store', [UserConversationController::class, 'store'])->name('user.messages.store');
 Route::get('/user/messages', [UserMessageController::class, 'index'])->name('user.messages.index');
 Route::get('/user/messages/{id}', [UserConversationController::class, 'index'])->name('user.messages.show');
+=======
+//Route::get('/admin/viewprofile', [AdminProfileController::class, 'index'])->name('admin.profiles.viewprofile');
+
+Route::post('/search',[AdminProfileController::class,'search'])->name('search');
+// Route::get('/', [PageController::class, 'defaultProfile'])->name('defaultProfile');
+
+//
+// Route::post('/search',function(){
+//
+// });
+>>>>>>> cian

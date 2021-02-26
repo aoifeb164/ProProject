@@ -1,5 +1,3 @@
-
-
 @extends('layouts.nav')
 
 
@@ -7,47 +5,6 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('/public/js/bs.js') }}" rel="stylesheet">
 
-<<<<<<< HEAD
-                <div class="card-body">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <td>Name</td>
-                                <td>{{ $profile->user->name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>{{ $profile->user->email }}</td>
-                            </tr>
-                            <tr>
-                                <td>D.O.B</td>
-                                <td>{{ $profile->dob }}</td>
-                            </tr>
-                            <tr>
-                                <td>Gender</td>
-                                <td>{{ $profile->gender->title }}</td>
-                            </tr>
-                            <tr>
-                                <td>Sign</td>
-                                <td>{{ $profile->sign->title }}</td>
-                            </tr>
-                            <tr>
-                                <td>Location</td>
-                                <td>{{ $profile->location }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                      {{-- creating back, edit and delete button --}}
-                    <a href="{{ route('admin.profiles.index') }}" class="btn btn-default">Back</a>
-                    {{-- <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Edit</a> --}}
-                    <form style="display:inline-block" method="POST" action="">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <button type="button" class="form-control btn btn-danger">Delete</a>
-                    </form>
-                </div>
-=======
 <script type=”text/javascript” src=”{{asset(‘js/bootstrap.js’)}}”></script> --}}
 
   @auth
@@ -82,11 +39,6 @@
   @endif
 @endauth
 
-@if (profileStatus == false){
-  redirect()->route('admin.profiles.index');
-
-}
-@endif
 
 <div class="container" style="background-color:pink">
 <div class="row">
@@ -95,27 +47,27 @@
         </div>
 
       <div class="col-md-1  mx-auto d-block" style="margin-top: 50px">
-          <h1> {{ $profile->user->name }} </h1>
+          <h1> Venus User </h1>
 
       </div>
       <div class="col-md-12 " style="margin-left:120px;margin-right:120px;">
           <div class="row align-items-start">
               <div class="col">
               <h2>
-                {{ $profile->sign->title }}
+                n/a
               </h2>
 
 
               </div>
               <div class="col">
               <h2>
-                {{ $profile->dob }}
+                n/a
               </h2>
 
               </div>
               <div class="col">
               <h2>
-                {{ $profile->location }}
+                n/a
               </h2>
 
               </div>
@@ -136,7 +88,6 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img class="d-block w-100" src="/images/profiles/profile_02.png" width="300" height="300" alt="First slide">
->>>>>>> cian
             </div>
             <div class="carousel-item">
               <img class="d-block w-100" src="/images/profiles/profile_03.png" width="300" height="300" alt="Second slide">
@@ -165,57 +116,6 @@
 
  </div>
 </div>
-
-
-
-{{--
-          <div class="card">
-            <div class="card-header">
-              Doctor {{$doctor->name}}
-            </div>
-
-            <div class="card-body">
-              <table class="table table-hover">
-                <tbody>
-                  <tr>
-                    <td>Name</td>
-                    <td>{{$doctor->name}}</td>
-                  </tr>
-                  <tr>
-                    <td>Address</td>
-                    <td>{{$doctor->address}}</td>
-                  </tr>
-                  <tr>
-                    <td>Phone</td>
-                    <td>{{$doctor->phone}}</td>
-                  </tr>
-                  <tr>
-                    <td>E-Mail</td>
-                    <td>{{$doctor->email}}</td>
-                  </tr>
-                  <tr>
-                    <td>Start Date</td>
-                    <td>{{$doctor->startDate}}</td>
-                  </tr>
-                  <tr>
-                    <td>Actions</td>
-                    <td>{{$doctor->actions}}</td>
-                  </tr>
-                </tbody>
-              </table>
-                         <a href="{{ route('admin.doctors.index')}}" class="btn btn-default">Back</a>
-                         <a href="{{ route('admin.doctors.edit', $doctor->id)}}" class="btn btn-warning">Edit</a>
-                         <form style="display:inline block" method="POST" action="{{ route('admin.doctors.destroy', $doctor->id)}}">
-                           <input type="hidden" name="_method" value="DELETE">
-                           <input type="hidden" name="_token" value="{{csrf_token()}}">
-                           <button type="submit" class="form-control btn btn-danger">Delete</button>
-                         </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
-
 
 
           @endsection
