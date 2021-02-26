@@ -1,10 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:00:54+00:00
-<<<<<<< HEAD
-# @Last modified time: 2021-02-04T10:31:31+00:00
-=======
-# @Last modified time: 2021-02-19T10:56:17+00:00
->>>>>>> aoife
+# @Last modified time: 2021-02-26T10:29:28+00:00
 
 
 namespace Database\Seeders;
