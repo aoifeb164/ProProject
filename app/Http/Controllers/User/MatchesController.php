@@ -1,21 +1,18 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-04T10:36:44+00:00
+# @Last modified time: 2021-02-25T16:50:49+00:00
 
 
 
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //calling the paient, user and insurance company models
 use App\Models\Profile;
-use App\Models\Sign;
-use App\Models\Gender;
-use App\Models\User;
 
-class ProfileController extends Controller
+class MatchesController extends Controller
 {
 
       /**
@@ -26,7 +23,7 @@ class ProfileController extends Controller
       public function __construct()
       {
           $this->middleware('auth');
-          $this->middleware('role:admin');
+          $this->middleware('role:user');
       }
     /**
      * Display a listing of the resource.
@@ -37,9 +34,9 @@ class ProfileController extends Controller
       //when requesting the index page display the profiles index and get all the profiles from the profiles table
       public function index()
       {
-      $profiles = Profile::all();
-      return view('admin.profiles.index', [
-     'profiles' => $profiles
+      $profile_matchee = Profile::all();
+      return view('user.matches.index', [
+     'profiles' => $profile_matchee
       ]);
 
     }
@@ -81,7 +78,7 @@ class ProfileController extends Controller
     {
       //find the profile by id
       $profile = Profile::findOrFail($id);
-      return view('admin.profiles.show', [
+      return view('user.profiles.show', [
         'profile' => $profile
       ]);
     }
@@ -96,15 +93,7 @@ class ProfileController extends Controller
      //when requesting to edit a profile display the profile edit page and get the profile by id from the profiles table
     public function edit($id)
     {
-      //find the profile by id
-      $profile = Profile::findOrFail($id);
-      $genders = Gender::all();
-      $signs = Sign::all();
-      return view('admin.profiles.edit', [
-        'profile' => $profile,
-        'gender_id' => $genders,
-        'sign_id' => $signs
-      ]);
+
     }
 
     /**
@@ -131,11 +120,11 @@ class ProfileController extends Controller
     //when deleting a profile get them by id in the profiles table and redirect back to profile index page
     public function destroy(Request $request, $id)
     {
-        $profile = Profile::findOrFail($id);
-        $profile->delete();
+        $profile_matchee = Profile::findOrFail($id);
+        $profile_matchee->delete();
 
         //message to appear when a doctor has been deleted
         // $request->session()->flash('danger', 'Profile deleted successfully!');
-        return redirect()->route('admin.profiles.index');
+        return redirect()->route('user.matches.index');
     }
 }

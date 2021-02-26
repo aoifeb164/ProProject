@@ -33,6 +33,10 @@
                                 <td>Sign</td>
                                 <td>{{ $profile->sign->title }}</td>
                             </tr>
+                            <tr>
+                                <td>Location</td>
+                                <td>{{ $profile->location }}</td>
+                            </tr>
                         </tbody>
                     </table>
 
