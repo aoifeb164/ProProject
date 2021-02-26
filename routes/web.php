@@ -2,7 +2,9 @@
 # @Date:   2020-11-03T10:21:46+00:00
 # @Last modified time: 2021-01-27T15:49:48+00:00
 
-
+//use App\User;
+use Illuminate\Support\Facades\Request;
+use App\Models\User;
 
 
 use Illuminate\Support\Facades\Route;
@@ -26,6 +28,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/about', [PageController::class, 'about'])->name('about');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -43,3 +46,13 @@ Route::get('/admin/profiles/{id}', [AdminProfileController::class, 'show'])->nam
 // Route::get('/admin/profiles/{id}/edit', [AdminProfileController::class, 'edit'])->name('admin.profiles.edit');
 // Route::put('/admin/profiles{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
 Route::delete('/admin/profiles/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profiles.destroy');
+
+//Route::get('/admin/viewprofile', [AdminProfileController::class, 'index'])->name('admin.profiles.viewprofile');
+
+Route::post('/search',[AdminProfileController::class,'search'])->name('search');
+// Route::get('/', [PageController::class, 'defaultProfile'])->name('defaultProfile');
+
+//
+// Route::post('/search',function(){
+//
+// });

@@ -1,5 +1,3 @@
-
-
 @extends('layouts.nav')
 
 
@@ -41,11 +39,6 @@
   @endif
 @endauth
 
-@if (profileStatus == false){
-  redirect()->route('admin.profiles.index');
-
-}
-@endif
 
 <div class="container" style="background-color:pink">
 <div class="row">
@@ -54,27 +47,27 @@
         </div>
 
       <div class="col-md-1  mx-auto d-block" style="margin-top: 50px">
-          <h1> {{ $profile->user->name }} </h1>
+          <h1> Venus User </h1>
 
       </div>
       <div class="col-md-12 " style="margin-left:120px;margin-right:120px;">
           <div class="row align-items-start">
               <div class="col">
               <h2>
-                {{ $profile->sign->title }}
+                n/a
               </h2>
 
 
               </div>
               <div class="col">
               <h2>
-                {{ $profile->dob }}
+                n/a
               </h2>
 
               </div>
               <div class="col">
               <h2>
-                {{ $profile->location }}
+                n/a
               </h2>
 
               </div>
@@ -123,57 +116,6 @@
 
  </div>
 </div>
-
-
-
-{{--
-          <div class="card">
-            <div class="card-header">
-              Doctor {{$doctor->name}}
-            </div>
-
-            <div class="card-body">
-              <table class="table table-hover">
-                <tbody>
-                  <tr>
-                    <td>Name</td>
-                    <td>{{$doctor->name}}</td>
-                  </tr>
-                  <tr>
-                    <td>Address</td>
-                    <td>{{$doctor->address}}</td>
-                  </tr>
-                  <tr>
-                    <td>Phone</td>
-                    <td>{{$doctor->phone}}</td>
-                  </tr>
-                  <tr>
-                    <td>E-Mail</td>
-                    <td>{{$doctor->email}}</td>
-                  </tr>
-                  <tr>
-                    <td>Start Date</td>
-                    <td>{{$doctor->startDate}}</td>
-                  </tr>
-                  <tr>
-                    <td>Actions</td>
-                    <td>{{$doctor->actions}}</td>
-                  </tr>
-                </tbody>
-              </table>
-                         <a href="{{ route('admin.doctors.index')}}" class="btn btn-default">Back</a>
-                         <a href="{{ route('admin.doctors.edit', $doctor->id)}}" class="btn btn-warning">Edit</a>
-                         <form style="display:inline block" method="POST" action="{{ route('admin.doctors.destroy', $doctor->id)}}">
-                           <input type="hidden" name="_method" value="DELETE">
-                           <input type="hidden" name="_token" value="{{csrf_token()}}">
-                           <button type="submit" class="form-control btn btn-danger">Delete</button>
-                         </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
-
 
 
           @endsection
