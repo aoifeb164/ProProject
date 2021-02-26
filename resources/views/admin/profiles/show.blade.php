@@ -7,47 +7,6 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('/public/js/bs.js') }}" rel="stylesheet">
 
-<<<<<<< HEAD
-                <div class="card-body">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <td>Name</td>
-                                <td>{{ $profile->user->name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>{{ $profile->user->email }}</td>
-                            </tr>
-                            <tr>
-                                <td>D.O.B</td>
-                                <td>{{ $profile->dob }}</td>
-                            </tr>
-                            <tr>
-                                <td>Gender</td>
-                                <td>{{ $profile->gender->title }}</td>
-                            </tr>
-                            <tr>
-                                <td>Sign</td>
-                                <td>{{ $profile->sign->title }}</td>
-                            </tr>
-                            <tr>
-                                <td>Location</td>
-                                <td>{{ $profile->location }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                      {{-- creating back, edit and delete button --}}
-                    <a href="{{ route('admin.profiles.index') }}" class="btn btn-default">Back</a>
-                    {{-- <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Edit</a> --}}
-                    <form style="display:inline-block" method="POST" action="">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <button type="button" class="form-control btn btn-danger">Delete</a>
-                    </form>
-                </div>
-=======
 <script type=”text/javascript” src=”{{asset(‘js/bootstrap.js’)}}”></script> --}}
 
   @auth
@@ -136,7 +95,6 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img class="d-block w-100" src="/images/profiles/profile_02.png" width="300" height="300" alt="First slide">
->>>>>>> cian
             </div>
             <div class="carousel-item">
               <img class="d-block w-100" src="/images/profiles/profile_03.png" width="300" height="300" alt="Second slide">

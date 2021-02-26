@@ -47,20 +47,6 @@ Route::get('/user/profiles/{id}/edit', [UserProfileController::class, 'edit'])->
 // Route::put('/admin/profiles{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
 Route::delete('/admin/profiles/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profiles.destroy');
 
-<<<<<<< HEAD
-Route::get('/user/profiles/{id}', [UserProfileController::class, 'show'])->name('user.profiles.show');
-Route::put('/user/profiles{id}', [UserProfileController::class, 'update'])->name('user.profiles.update');
-Route::delete('/user/profiles/{id}', [UserProfileController::class, 'destroy'])->name('user.profiles.destroy');
-
-Route::get('/user/matches', [UserMatchesController::class, 'index'])->name('user.matches.index');
-Route::delete('/user/matches/{id}', [UserMatchesController::class, 'destroy'])->name('user.matches.destroy');
-
-Route::get('/user/conversations/create', [UserConversationController::class, 'create'])->name('user.conversations.create');
-Route::get('/user/conversations', [UserConversationController::class, 'index'])->name('user.conversations.index');
-Route::post('/user/messages/store', [UserConversationController::class, 'store'])->name('user.messages.store');
-Route::get('/user/messages', [UserMessageController::class, 'index'])->name('user.messages.index');
-Route::get('/user/messages/{id}', [UserConversationController::class, 'index'])->name('user.messages.show');
-=======
 //Route::get('/admin/viewprofile', [AdminProfileController::class, 'index'])->name('admin.profiles.viewprofile');
 
 Route::post('/search',[AdminProfileController::class,'search'])->name('search');
@@ -70,4 +56,3 @@ Route::post('/search',[AdminProfileController::class,'search'])->name('search');
 // Route::post('/search',function(){
 //
 // });
->>>>>>> cian
