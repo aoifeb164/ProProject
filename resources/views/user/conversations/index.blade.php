@@ -24,7 +24,7 @@
           @foreach ($conversations as $conversation)
               {{-- get profiles by id and display the following information --}}
             <tr data-id="{{ $conversation->id }}">
-              <td>{{ $conversation->title }}</td>
+              <td><h5>{{ $conversation->title }}</h5></td>
               <td>{{ $conversation->sender->user->name }}</td>
               <td>
                   {{-- creating a view, edit and delete button --}}

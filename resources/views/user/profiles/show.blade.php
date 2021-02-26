@@ -14,15 +14,25 @@
 
                     <tr>
                         {{-- <td>{{ $profile->photo->filename }}</td> --}}
+                        <div class="text-center">
                         <img src="{{url ('/'. $profile->photo->filename)}}" />
+                        <div>
                     </tr>
                     <tr>
-                        <td>{{ $profile->user->name }}</td>
+                      <div class="text-center">
+                        <td>{{ $profile->user->name }}</p></td>
+                      </div>
                     </tr>
                     <tr>
+                      <div class="position-absolute top-0 start-0">
                         <td>{{ $profile->sign->title }}</td>
+                      </div>
+                       <div class="position-absolute top-0 start-50 translate-middle-x"></div>
                         <td>{{ $profile->dob }}</td>
+                      </div>
+                        <div class="position-absolute top-0 end-0"></div>
                         <td>{{ $profile->location }}</td>
+                      </div>
                     </tr>
                     <tr>
                         <td>{{ $profile->bio }}</td>
