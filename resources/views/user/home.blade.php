@@ -5,10 +5,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
+
+                <div class="header">
                   <div class="text-center">
-                    <h2>Start Liking!</h2>
+                    <h2><u>Home</u></h2>
                 </div>
               </div>
 
@@ -35,30 +35,30 @@
                         <div class="carousel-inner">
                             @foreach( $profiles as $profile )
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                <img src="{{url ('/'. $profile->photo->filename)}}" a class="rounded mx-auto d-block" height="250" width="250">
-                                <a href="{{ route('user.profiles.show', $profile->id) }}"><h5 class="text-center">{{$profile->user->name}}</h5></a>
+                                <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="350" width="350">
+                                <a href="{{ route('user.profiles.show', $profile->id) }}"><h5 class="text-center" style="padding-top:50px;">{{$profile->user->name}}</h5></a>
                                 <p class="text-center">{{$profile->dob}}</p>
                                 <p class="text-center">{{$profile->sign->title}}</p>
                             </div>
                             @endforeach
                         </div>
-                        <a class="carousel-control-prev" color="black" href="" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" style="background-color:#2e164f;" href="" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <a class="carousel-control-next" style="background-color:#2e164f;" href="#carouselExampleCaptions" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         </a>
                     </div>
                 </div>
                 <!--Carousel-->
                 <div class="text-center">
-                <button type="button" class="btn btn-outline-success">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <button type="button" class="btn btn-outline-success" style="border-radius:100px; margin:10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                     </svg>
                 </button>
-                <button type="button" class="btn btn-outline-danger">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                <button type="button" class="btn btn-outline-danger" style="border-radius:100px; margin:10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                     </svg>
                 </button>
