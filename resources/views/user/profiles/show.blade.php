@@ -4,44 +4,43 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                {{-- <div class="card-header">{{ __('Dashboard') }}
-            </div> --}}
 
-            <div class="card-body">
+            {{-- <div class="card-header">{{ __('Dashboard') }}
+        </div> --}}
 
-                <table class="table table-hover">
+<div class="card" style="height:600px; width:800px; margin-top:20px; padding-top:20px;">
+        <div class="card-body">
+            {{-- <td>{{ $profile->photo->filename }}</td> --}}
+            <div class="text-center">
+                <img src="{{url ('/'. $profile->photo->filename)}}" style="width:260px; height:260px; border-radius:125px; border: 2px solid #2e164f;" />
+            </div>
 
-                    <tr>
-                        {{-- <td>{{ $profile->photo->filename }}</td> --}}
-                        <div class="text-center">
-                        <img src="{{url ('/'. $profile->photo->filename)}}" />
-                        <div>
-                    </tr>
-                    <tr>
-                      <div class="text-center">
-                        <td>{{ $profile->user->name }}</p></td>
-                      </div>
-                    </tr>
-                    <tr>
-                      <div class="position-absolute top-0 start-0">
-                        <td>{{ $profile->sign->title }}</td>
-                      </div>
-                       <div class="position-absolute top-0 start-50 translate-middle-x"></div>
-                        <td>{{ $profile->dob }}</td>
-                      </div>
-                        <div class="position-absolute top-0 end-0"></div>
-                        <td>{{ $profile->location }}</td>
-                      </div>
-                    </tr>
-                    <tr>
-                        <td>{{ $profile->bio }}</td>
-                    </tr>
 
-                </table>
+            <div class="text-center">
+                <td>
+                    <h4 style="padding-top:40px;">{{ $profile->user->name }}</h4>
+                </td>
+            </div>
+
+            <div class="row text-center" style="padding-top:20px; padding-bottom:20px;">
+                <div class="col-sm">
+                    <p>{{ $profile->sign->title }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ $profile->dob }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ $profile->location }}</p>
+                </div>
+            </div>
+            <div class="row" style="width:750px;">
+
+                    <p style="padding-left:60px;">{{ $profile->bio }}</p>
 
             </div>
         </div>
+</div>
     </div>
+</div>
 </div>
 @endsection

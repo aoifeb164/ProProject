@@ -8,7 +8,7 @@
 
                 <div class="header">
                   <div class="text-center">
-                    <h2><u>Home</u></h2>
+                    <h3><u>Home</u></h3>
                 </div>
               </div>
 
@@ -42,10 +42,10 @@
                             </div>
                             @endforeach
                         </div>
-                        <a class="carousel-control-prev" style="background-color:#2e164f;" href="" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <a class="carousel-control-prev" style="background-color:#2e164f; height:50px; width:50px; border-radius:100px; margin-top:250px;" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         </a>
-                        <a class="carousel-control-next" style="background-color:#2e164f;" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <a class="carousel-control-next" style="background-color:#2e164f; height:50px; width:50px; border-radius:100px; margin-top:250px;" href="#carouselExampleCaptions" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         </a>
                     </div>

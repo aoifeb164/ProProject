@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-              <div class="header" style="padding-left:35px;, padding-top:50px;">
-                <h2>{{ __('Welcome') }}</h2>
+              <div class="header" style="padding-left:35px;">
+                <h2 style=" padding-top:80px;">{{ __('Welcome') }}</h2>
                 <h2>{{ __('Back') }}</h2>
                 </div>
 
