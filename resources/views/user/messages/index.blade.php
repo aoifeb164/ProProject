@@ -26,6 +26,8 @@
                             <tr data-id="{{ $message->id }}">
                                 <td>{{ $message->message }}</td>
                                 <td>{{ $message->sender_id}}</td>
+                                {{-- <td><p >{{ $messages->sender->user->name }}</p>
+  </td> --}}
                                 <td>
                                     {{-- creating a view, edit and delete button --}}
                                     {{-- <a href="{{ route('user.messages.show') }}" class="btn btn-primary">View message</a> --}}

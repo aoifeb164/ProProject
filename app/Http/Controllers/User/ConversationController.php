@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-25T16:37:53+00:00
+# @Last modified time: 2021-03-04T18:25:10+00:00
 
 
 
@@ -40,22 +40,23 @@ class ConversationController extends Controller
       //when requesting the index page display the conversations index and get all the conversations from the conversations table
       public function index()
       {
-        // $user = Auth::user();
+      $user = Auth::user();
       $conversations = Conversation::all();
       // $conversations = $user->profile->started();
       // $conversations = $user->profile->joined();
-      return view('user.conversations.index', [
-     'conversations' => $conversations
-      ]);
+     //  return view('user.conversations.index', [
+     // 'conversations' => $conversations
+     //  ]);
 
       // $user = Auth::user();
       //
       // //display only the patient who is logged in visits and order by date
-      // $visits = $user->patient->visits()->orderBy('date', 'asc')->paginate(8);
-      //
-      // return view('patient.visits.index', [
-      //   'visits' => $visits
-      // ]);
+      $conversations = $user->profile->started()->orderBy('id', 'asc')->paginate(8);
+      // $conversations = $user->profile->joined()->orderBy('id', 'asc')->paginate(8);
+
+      return view('user.conversations.index', [
+        'conversations' => $conversations
+      ]);
 
     }
 

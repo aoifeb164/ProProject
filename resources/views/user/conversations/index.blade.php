@@ -28,9 +28,15 @@
             <tr data-id="{{ $conversation->id }}">
               <td><h5 style="padding-left:80px">{{ $conversation->title }}</h5></td>
               <td><p style="padding-left:140px">{{ $conversation->sender->user->name }}</p></td>
+              <td><p >{{ $conversation->recipient->user->name }}</p></td>
               <td>
                   {{-- creating a view, edit and delete button --}}
                 <a href="{{ route('user.messages.index') }}" class="btn btn-primary" style="margin-left:140px">View Conversation</a>
+                <form style="display:inline-block" method="POST" action="{{ route('user.conversations.destroy', $conversation->id ) }}">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <button type="submit" class="form-control btn btn-danger">delete</a>
+                      </form>
 
                 </td>
               </tr>

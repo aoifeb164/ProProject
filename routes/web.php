@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-03T10:21:46+00:00
-# @Last modified time: 2021-02-25T16:17:07+00:00
+# @Last modified time: 2021-03-04T16:52:55+00:00
 
 
 
@@ -51,6 +51,7 @@ Route::delete('/user/profiles/{id}', [UserProfileController::class, 'destroy'])-
 Route::get('/user/matches', [UserMatchesController::class, 'index'])->name('user.matches.index');
 Route::delete('/user/matches/{id}', [UserMatchesController::class, 'destroy'])->name('user.matches.destroy');
 
+Route::delete('/user/conversations/{id}', [UserConversationController::class, 'destroy'])->name('user.conversations.destroy');
 Route::get('/user/conversations/create', [UserConversationController::class, 'create'])->name('user.conversations.create');
 Route::get('/user/conversations', [UserConversationController::class, 'index'])->name('user.conversations.index');
 Route::post('/user/messages/store', [UserConversationController::class, 'store'])->name('user.messages.store');

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-25T16:02:05+00:00
+# @Last modified time: 2021-03-04T17:49:43+00:00
 
 
 
@@ -86,9 +86,11 @@ class ProfileController extends Controller
     public function show($id)
     {
       //find the profile by id
+      $profiles = Profile::all();
       $profile = Profile::findOrFail($id);
       return view('user.profiles.show', [
-        'profile' => $profile
+        'profile' => $profile,
+        'profiles' => $profiles
       ]);
     }
 

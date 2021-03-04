@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-25T16:50:49+00:00
+# @Last modified time: 2021-03-04T17:43:13+00:00
 
 
 
@@ -9,6 +9,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 //calling the paient, user and insurance company models
 use App\Models\Profile;
 
@@ -34,9 +35,17 @@ class MatchesController extends Controller
       //when requesting the index page display the profiles index and get all the profiles from the profiles table
       public function index()
       {
+      $user = Auth::user();
       $profile_matchee = Profile::all();
+      $profile_matcher = Profile::all();
+
+      $profile_matcher = $user->profile->matches_sent()->orderBy('id', 'asc')->paginate(8);
+
+
+
       return view('user.matches.index', [
-     'profiles' => $profile_matchee
+     'profiles' => $profile_matchee,
+     'profiles' => $profile_matcher
       ]);
 
     }

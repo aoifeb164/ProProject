@@ -28,36 +28,55 @@
                             <input type="text" class="form-control" id="title" name="title" value="{{ old('') }}" />
                         </div>
                         <br>
-                        <div class="form_group">
+                        {{-- <div class="form_group">
                             <label for="sender_id">Sender id</label>
                             <input type="text" class="form-control" id="sender_id" name="sender_id" value="{{ old('sender_id') }}" />
-                        </div>
-                        <br>
-                        <div class="form_group">
-                            <label for="recipient_id">Recipient id</label>
-                            <input type="text" class="form-control" id="recipient_id" name="recipient_id" value="{{ old('recipient_id') }}" />
-                        </div>
-                        <br>
-                        <div class="form_group">
-                            <label for="message">Message</label>
-                            <input type="text" class="form-control" id="message" name="message" value="{{ old('message') }}" />
-                        </div>
-                        <br>
-                        <div class="form_group">
-                            <label for="sender_id">sender_id</label>
-                            <input type="text" class="form-control" id="sender_id" name="sender_id" value="{{ old('sender_id') }}" />
-                        </div>
-                        <br>
-
-                        <div class="float-right">
-                            <br>
-                            {{-- creating cancel and submit button --}}
-                            <a href="{{ route('user.messages.index') }}" class="btn btn-default">Cancel</a>
-                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                    </form>
+                </div> --}}
+                <div class="form_group">
+                    <label for="sender">Sender</label>
+                    <br>
+                    <select name="sender_id">
+                        @foreach ($profiles as $profile)
+                        <option value="{{ $profile->id }}" {{ (old('sender_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
+                <br>
+                <div class="form_group">
+                    <label for="recipient">Recipient</label>
+                    <br>
+                    <select name="recipient_id">
+                        @foreach ($profiles as $profile)
+                        <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <br>
+                <div class="form_group">
+                    <label for="message">Message</label>
+                    <input type="text" class="form-control" id="message" name="message" value="{{ old('message') }}" />
+                </div>
+                <br>
+                {{-- <div class="form_group">
+                            <label for="sender">Sender</label>
+                            <br>
+                            <select name="sender_id">
+                                @foreach ($profiles as $profile)
+                                <option value="{{ $profile->user->name }}" {{ (old('sender_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
+                @endforeach
+                </select>
+            </div> --}}
+            <br>
+
+            <div class="float-right">
+                <br>
+                {{-- creating cancel and submit button --}}
+                <a href="{{ route('user.messages.index') }}" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
