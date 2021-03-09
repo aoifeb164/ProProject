@@ -35,10 +35,11 @@
                         <div class="carousel-inner">
                             @foreach( $profiles as $profile )
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="350" width="350">
+                                <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:0px;" a class="rounded mx-auto d-block" height="350" width="300">
                                 <a href="{{ route('user.profiles.show', $profile->id) }}"><h5 class="text-center" style="padding-top:50px;">{{$profile->user->name}}</h5></a>
                                 <p class="text-center">{{$profile->dob}}</p>
                                 <p class="text-center">{{$profile->sign->title}}</p>
+                                <p class="text-center">{{$profile->gender->title}}</p>
                             </div>
                             @endforeach
                         </div>

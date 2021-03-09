@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-03-04T18:25:10+00:00
+# @Last modified time: 2021-03-09T15:43:38+00:00
 
 
 
@@ -42,21 +42,20 @@ class ConversationController extends Controller
       {
       $user = Auth::user();
       $conversations = Conversation::all();
-      // $conversations = $user->profile->started();
-      // $conversations = $user->profile->joined();
-     //  return view('user.conversations.index', [
-     // 'conversations' => $conversations
-     //  ]);
-
-      // $user = Auth::user();
-      //
-      // //display only the patient who is logged in visits and order by date
-      $conversations = $user->profile->started()->orderBy('id', 'asc')->paginate(8);
-      // $conversations = $user->profile->joined()->orderBy('id', 'asc')->paginate(8);
+      $conversations = $user->profile->joined()->orderBy('id', 'asc')->paginate(8);
+    //  $conversations = $user->profile->joined()->orderBy('id', 'asc')->paginate(8);
 
       return view('user.conversations.index', [
         'conversations' => $conversations
       ]);
+
+      // $user = Auth::user();
+      // $conversations = Conversation::all();
+      // $conversations = $user->profile->joined()->orderBy('id', 'asc')->paginate(8);
+      //
+      // return view('user.conversations.index', [
+      //   'conversations' => $conversations
+      // ]);
 
     }
 

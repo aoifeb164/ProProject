@@ -1,6 +1,6 @@
 <?php
-# @Date:   2020-12-14T11:36:37+00:00
-# @Last modified time: 2021-03-09T16:41:28+00:00
+# @Date:   2021-03-09T17:27:35+00:00
+# @Last modified time: 2021-03-09T17:30:03+00:00
 
 
 
@@ -9,7 +9,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhotosTable extends Migration
+class CreateCompatablitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,12 +18,12 @@ class CreatePhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('photos', function (Blueprint $table) {
+        Schema::create('compatablities', function (Blueprint $table) {
             $table->id();
-            $table->string('filename');
-            $table->string('caption');
-            $table->unsignedBigInteger('profile_id');
             $table->timestamps();
+            $table->bigInteger('first_sign_id')->unsigned();
+            $table->bigInteger('second_sign_id')->unsigned();
+            $table->bigInteger('weight')->unsigned();
         });
     }
 
@@ -34,6 +34,6 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('photos');
+        Schema::dropIfExists('compatablities');
     }
 }

@@ -54,7 +54,7 @@
                             <div class="row">
                                 <div class="col" style="padding-left:60px; padding-right:30px">
 
-                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="120" width="120">
+                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; border: 2px solid #555; " a class="rounded mx-auto d-block" height="120" width="120">
 
 
                                 </div>
@@ -62,7 +62,7 @@
 
                                 <div class="col" style="padding-left:30px; padding-right:30px">
 
-                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="120" width="120">
+                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; border: 2px solid #555;" a class="rounded mx-auto d-block" height="120" width="120">
 
                                 </div>
 
@@ -70,14 +70,14 @@
 
                                 <div class="col" style="padding-left:30px; padding-right:30px">
 
-                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="120" width="120">
+                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; border: 2px solid #555;" a class="rounded mx-auto d-block" height="120" width="120">
 
 
                                 </div>
 
                                 <div class="col" style="padding-left:30px; padding-right:30px">
 
-                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="120" width="120">
+                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; border: 2px solid #555;" a class="rounded mx-auto d-block" height="120" width="120">
 
 
                                 </div>
