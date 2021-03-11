@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-03-09T18:03:59+00:00
+# @Last modified time: 2021-03-11T10:20:34+00:00
 
 
 
@@ -36,16 +36,14 @@ class MatchesController extends Controller
       public function index()
       {
       $user = Auth::user();
-      $profile_matchee = Profile::all();
-      $profile_matcher = Profile::all();
 
-      $profile_matcher = $user->profile->matches_sent()->orderBy('id', 'asc')->paginate(8);
-
-
+      $matches_sent = $user->profile->matches_sent;
+      $matches_recieved = $user->profile->matches_recieved;
+    //  dd($matches_sent);
 
       return view('user.matches.index', [
-     'profiles' => $profile_matchee,
-     'profiles' => $profile_matcher
+     'matches_recieved' => $matches_recieved,
+     'matches_sent' => $matches_sent
       ]);
 
     }

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T12:36:21+00:00
-# @Last modified time: 2020-12-14T12:37:33+00:00
+# @Last modified time: 2021-03-10T16:06:43+00:00
 
 
 
@@ -19,7 +19,7 @@ class AddForeignKeyToPhotosTable extends Migration
     public function up()
     {
         Schema::table('photos', function (Blueprint $table) {
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
         });
     }
 

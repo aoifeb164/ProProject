@@ -76,11 +76,12 @@
                             <br>
 
                             <button type="submit" class="btn btn-primary pull-right">Update</a>
-                                <form style="display:inline-block" method="POST" action="{{ route('user.profiles.destroy', $profile->id ) }}">
+                              {{-- 
+                                <form style="display:inline-block" method="POST" action="{{ route('user.profiles.destroy', $profile->id ) }}" method = "post">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <button type="submit" class="form-control btn btn-danger">Delete</a>
-                                </form>
+                                </form> --}}
                         </div>
                     </form>
                 </div>

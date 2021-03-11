@@ -35,18 +35,18 @@
                         <div class="carousel-inner">
                             @foreach( $profiles as $profile )
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:0px;" a class="rounded mx-auto d-block" height="350" width="300">
-                                <a href="{{ route('user.profiles.show', $profile->id) }}"><h5 class="text-center" style="padding-top:50px;">{{$profile->user->name}}</h5></a>
+                                <img src="{{url ('/'. $profile->photo->filename)}}" a class="rounded mx-auto d-block" height="350" width="250">
+                                <a href="{{ route('user.profiles.show', $profile->id) }}"><h5 class="text-center" style="padding-top:20px;">{{$profile->user->name}}</h5></a>
                                 <p class="text-center">{{$profile->dob}}</p>
                                 <p class="text-center">{{$profile->sign->title}}</p>
                                 <p class="text-center">{{$profile->gender->title}}</p>
                             </div>
                             @endforeach
                         </div>
-                        <a class="carousel-control-prev" style="background-color:#2e164f; height:50px; width:50px; border-radius:100px; margin-top:250px;" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" style="background-color:#2e164f; height:50px; width:50px; border-radius:100px; margin-top:200px;" href="#carouselExampleCaptions" role="button" data-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         </a>
-                        <a class="carousel-control-next" style="background-color:#2e164f; height:50px; width:50px; border-radius:100px; margin-top:250px;" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <a class="carousel-control-next" style="background-color:#2e164f; height:50px; width:50px; border-radius:100px; margin-top:200px;" href="#carouselExampleCaptions" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         </a>
                     </div>

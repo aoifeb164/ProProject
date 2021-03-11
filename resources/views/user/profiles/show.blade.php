@@ -12,7 +12,7 @@
             <div class="card-body">
                 {{-- <td>{{ $profile->photo->filename }}</td> --}}
                 <div class="text-center">
-                    <img src="{{url ('/'. $profile->photo->filename)}}" style="width:260px; height:260px; border-radius:125px; border: 2px solid #2e164f;" />
+                    <img src="{{url ('/'. $profile->photo->filename)}}" style="width:200px; height:240px; border-radius:125px;" />
                 </div>
 
 
@@ -28,6 +28,9 @@
                     </div>
                     <div class="col-md">
                         <h5>{{ $profile->dob }}</h5>
+                    </div>
+                    <div class="col-md">
+                        <h5>{{ $profile->gender->title }}</h5>
                     </div>
                     <div class="col-md">
                         <h5>{{ $profile->location }}</h5>
@@ -52,9 +55,9 @@
                                 <h5 style="padding-left:75px; padding-top: 20px;">Photos:</h5>
                             </div>
                             <div class="row">
-                                <div class="col" style="padding-left:60px; padding-right:30px">
+                                <div class="col" style="padding-left:80px; padding-right:30px">
 
-                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; border: 2px solid #555; " a class="rounded mx-auto d-block" height="120" width="120">
+                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; " a class="rounded mx-auto d-block" height="150" width="120">
 
 
                                 </div>
@@ -62,7 +65,7 @@
 
                                 <div class="col" style="padding-left:30px; padding-right:30px">
 
-                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; border: 2px solid #555;" a class="rounded mx-auto d-block" height="120" width="120">
+                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="150" width="120">
 
                                 </div>
 
@@ -70,14 +73,14 @@
 
                                 <div class="col" style="padding-left:30px; padding-right:30px">
 
-                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; border: 2px solid #555;" a class="rounded mx-auto d-block" height="120" width="120">
+                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="150" width="120">
 
 
                                 </div>
 
                                 <div class="col" style="padding-left:30px; padding-right:30px">
 
-                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px; border: 2px solid #555;" a class="rounded mx-auto d-block" height="120" width="120">
+                                    <img src="{{url ('/'. $profile->photo->filename)}}" style="margin-top:30px;" a class="rounded mx-auto d-block" height="150" width="120">
 
 
                                 </div>

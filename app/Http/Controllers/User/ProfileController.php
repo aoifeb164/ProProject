@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-03-04T17:49:43+00:00
+# @Last modified time: 2021-03-10T16:18:18+00:00
 
 
 
@@ -132,7 +132,6 @@ class ProfileController extends Controller
         'name' => 'required|max:191',
         'email' => 'required|max:191',
 
-
         'bio' => 'required|max:191',
         'location' => 'required|max:191',
         'gender_id' => 'required|max:191',
@@ -140,13 +139,11 @@ class ProfileController extends Controller
 
       ]);
 
-      //saves as a new user and stores the following information in the user table
       $user = User::findOrFail($id);
       $user->name = $request->input('name');
       $user->email = $request->input('email');
       $user->save();
 
-      //saves as a new patient and stores the following in the patients table
       $profile = Profile::findOrFail($id);
       $profile->bio = $request->input('bio');
       $profile->location = $request->input('location');

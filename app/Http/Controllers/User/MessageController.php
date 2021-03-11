@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-03-09T10:54:55+00:00
+# @Last modified time: 2021-03-10T17:08:29+00:00
 
 
 
@@ -9,6 +9,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 //calling the paient, user and insurance company models
 use App\Models\Conversation;
 use App\Models\Sign;
@@ -39,9 +40,11 @@ class MessageController extends Controller
       //when requesting the index page display the conversations index and get all the conversations from the conversations table
       public function index()
       {
-      $messages = Message::all();
+        $user = Auth::user();
+        $messages = Message::all();
+
       return view('user.messages.index', [
-     'messages' => $messages
+        'messages' => $messages
       ]);
 
       // $user = Auth::user();

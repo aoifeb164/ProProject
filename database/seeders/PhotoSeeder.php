@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-15T09:53:07+00:00
-# @Last modified time: 2021-03-09T16:49:09+00:00
+# @Last modified time: 2021-03-10T13:36:39+00:00
 
 
 
@@ -25,11 +25,11 @@ class PhotoSeeder extends Seeder
       $profiles = Profile::all();
 
       $images = [
-        'images/profiles/profile_01.png',
+        'images/profiles/profile_01.jpg',
         'images/profiles/profile_02.jpg',
-        'images/profiles/profile_03.png',
-        'images/profiles/profile_04.png',
-        'images/profiles/profile_05.png'
+        'images/profiles/profile_03.jpg',
+        'images/profiles/profile_04.jpg',
+        'images/profiles/profile_05.jpg'
 
       ];
       foreach ($profiles as $profile){
