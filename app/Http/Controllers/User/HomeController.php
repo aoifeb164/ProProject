@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T14:07:54+00:00
-# @Last modified time: 2021-03-10T18:11:07+00:00
+# @Last modified time: 2021-03-11T16:41:34+00:00
 
 
 
@@ -71,11 +71,12 @@ class HomeController extends Controller
         unset($ids[$index]);
       }
 
+
       $matches = Profile::findMany($ids);
+
       $weights = array();
       $signs = Sign::all();
-      $weights = Compatability::where('first_sign_id', Auth::user()->profile->id)->get();
-
+      $weights = Compatability::where('first_sign_id', Auth::user()->profile->sign->id)->get();
       $rankedMatches = $matches->sortByDesc(function ($profile, $index) use($weights) {
         return $weights->firstWhere('second_sign_id', $profile->sign_id)->weight;
       });
