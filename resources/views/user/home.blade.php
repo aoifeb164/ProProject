@@ -38,7 +38,7 @@
                             @foreach( $profiles as $profile )
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                                 <img src="{{url ('/'. $profile->photo->filename)}}" a class="rounded mx-auto d-block" height="350" width="250" style="padding-top:20px">
-                                <a href="{{ route('user.profiles.show', $profile->id) }}"><h5 class="text-center" style="padding-top:20px;">{{$profile->user->name}}</h5></a>
+                                <a href="{{ route('user.profiles.show') }}"><h5 class="text-center" style="padding-top:20px;">{{$profile->user->name}}</h5></a>
                                 <p class="text-center">{{$profile->dob}}</p>
                                 <p class="text-center">{{$profile->sign->title}}</p>
                                 <p class="text-center">{{$profile->gender->title}}</p>
