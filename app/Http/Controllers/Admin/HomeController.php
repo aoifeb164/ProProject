@@ -34,4 +34,8 @@ class HomeController extends Controller
       // $user->authorizeRoles('admin');
         return view('admin.home');
     }
+
+    public function searchProfiles(){
+      return view('admin.searchProfiles');
+    }
 }

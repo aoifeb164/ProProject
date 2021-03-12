@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+  test
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -32,7 +33,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <a class="nav-link" href="{{ route('admin.profiles.index') }}">{{ __('Profiles') }}</a>
+                              {{-- <a class="nav-link" href="{{ route('admin.searchProfiles') }}">{{ __('Search') }}</a> --}}
+                        <a class="nav-link" href="{{ route('user.conversations.index') }}">{{ __('Inbox') }}</a>
+
+
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

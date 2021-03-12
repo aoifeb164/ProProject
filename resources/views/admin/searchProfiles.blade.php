@@ -4,11 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
-              <div class="header" style="padding-left:35px;">
-                <h2 style=" padding-top:80px;">{{ __('Welcome') }}</h2>
-                <h2>{{ __('Back') }}</h2>
-                </div>
+            <div class="card">
+                <div class="card-header">Welcome</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -24,7 +21,8 @@
                 </div>
 
                 <form action="/search" method="POST" role="search">
-                    {{ csrf_field() }}
+                    {{-- {{ csrf_field() }} --}}
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" placeholder="Search users"> <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">
@@ -34,7 +32,7 @@
                     </div>
                 </form>
                 <div class="container">
-                    @if(isset($users))
+                    @if(isset($profiles))
                     <p> The Search results for your query <b> {{ $query }} </b> are :</p>
                     <h2>User Details:</h2>
                     <table class="table table-striped">
@@ -43,18 +41,18 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Gender</th>
+                                <th>Sign</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($profiles as $profile)
                             <tr>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
-                                  {{-- <td>{{$user->profile->gender->title}}</td> --}}
-                                  {{-- <td>{{$profile->gender_id}}</td>
-                                  <td>{{$profile->sign_id}}</td> --}}
-                                  <td>  <a href="{{ route('admin.profiles.show', $user->id) }}" class="btn btn-primary">View</a> </td>
+                                <td>{{$profile->user->name}}</td>
+                                <td>{{$profile->user->email}}</td>
+                                <td>{{$profile->gender->title}}</td>
+                                <td>{{$profile->sign->title}}</td>
+                                <td><a href="{{ route('admin.profiles.show', $user->id) }}" class="btn btn-primary">View</a> </td>
                               </tr>
                             </tr>
                             @endforeach
