@@ -18,10 +18,10 @@
             <div class="card-body">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="recieved-tab" data-toggle="tab" href="#recieved" role="tab" aria-controls="recieved" aria-selected="true">Matches Recieved</a>
+                        <a class="nav-link active" id="recieved-tab" data-toggle="tab" href="#recieved" role="tab" aria-controls="recieved" aria-selected="true">Likes Recieved</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="sent-tab" data-toggle="tab" href="#sent" role="tab" aria-controls="sent" aria-selected="false">Matches Sent</a>
+                        <a class="nav-link" id="sent-tab" data-toggle="tab" href="#sent" role="tab" aria-controls="sent" aria-selected="false">Likes Sent</a>
                     </li>
 
 
@@ -39,7 +39,9 @@
                                 <tr data-id="{{ $profile->id }}">
                                     {{-- <td><h5>{{ $profile->user->name }}</h5>
                                     </td> --}}
+                                    <td><img src="{{url ('/'. $profile->photo->filename)}}" a class="mx-auto d-block" height="50" width="50" style="border-radius:125px"></td>
                                     <td><a href="{{ route('user.profiles.show') }}">
+
                                             <h5>{{$profile->user->name}}</h5>
                                         </a></td>
                                     <td>{{ $profile->dob }}</td>
@@ -48,7 +50,6 @@
                                     <td>{{ $profile->pivot->status }}</td>
                                     <td>
                                       @if($profile->pivot->status== 'accepted')
-                                          <a href="{{ route('user.conversations.create') }}" class="btn btn-primary">Message</a>
                                           <form style="display:inline-block" method="POST" action="{{ route('user.matches.destroy', $profile->id ) }}">
                                               <input type="hidden" name="_method" value="DELETE">
                                               <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -75,6 +76,7 @@
                                 <tr data-id="{{ $profile->id }}">
                                     {{-- <td><h5>{{ $profile->user->name }}</h5>
                                     </td> --}}
+                                                                        <td><img src="{{url ('/'. $profile->photo->filename)}}" a class="mx-auto d-block" height="50" width="50" style="border-radius:125px"></td>
                                     <td><a href="{{ route('user.profiles.show') }}">
                                             <h5>{{$profile->user->name}}</h5>
                                         </a></td>
@@ -104,7 +106,6 @@
                                             </form>
                                             @endif
                                             @if($profile->pivot->status== 'accepted')
-                                                <a href="{{ route('user.conversations.create') }}" class="btn btn-primary">Message</a>
                                                 <form style="display:inline-block" method="POST" action="{{ route('user.matches.destroy', $profile->id ) }}">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

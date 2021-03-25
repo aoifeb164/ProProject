@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-03-10T17:58:32+00:00
+# @Last modified time: 2021-03-25T18:08:44+00:00
 
 
 
@@ -41,23 +41,17 @@ class ConversationController extends Controller
       public function index()
       {
       $user = Auth::user();
-      $conversations = Conversation::all();
-      $profile = Profile::all();
-      $conversations = $user->profile->joined()->orderBy('id', 'asc')->paginate(8);
-    //  $conversations = $user->profile->joined()->orderBy('id', 'asc')->paginate(8);
+      // $conversations = Conversation::all();
+      $profiles = Profile::all();
+      $joined = $user->profile->joined;
+      $started = $user->profile->started;
+    //  $conversations = $user->profile->started()->orderBy('id', 'asc')->paginate(8);
 
       return view('user.conversations.index', [
-        'conversations' => $conversations,
-        'profile' =>$profile
+        'joined' => $joined,
+        'started' =>$started,
+        'profiles' =>$profiles
       ]);
-
-      // $user = Auth::user();
-      // $conversations = Conversation::all();
-      // $conversations = $user->profile->joined()->orderBy('id', 'asc')->paginate(8);
-      //
-      // return view('user.conversations.index', [
-      //   'conversations' => $conversations
-      // ]);
 
     }
 

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:54:28+00:00
-# @Last modified time: 2021-03-12T12:41:15+00:00
+# @Last modified time: 2021-03-23T16:04:52+00:00
 
 
 
@@ -98,9 +98,5 @@ class RegisterController extends Controller
         ]);
         return $user;;
 
-        $profile = Profile::signs([
-          'sign_id' => $data['sign_id'],
-          'profile_id' =>$profile->id
-        ]);
     }
 }

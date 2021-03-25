@@ -18,17 +18,6 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    {{-- @foreach($profiles as $profile)
-                    <div class="carousel-item active">
-                           <img src="{{url ('/'. $profile->photo->filename)}}"a class="d-block w-10" height="300" width="300">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{$profile->name}}</h5>
-                        <p>{{$profile->age}}</p>
-                        <p>{{$profile->sign}}</p>
-                    </div>
-                </div>
-                @endforeach --}}
-                <!--Carousel-->
 
                 <div class="bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -37,13 +26,15 @@
                         <div class="carousel-inner">
                             @foreach( $profiles as $profile )
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                              @if(!(Auth::user()->profile->matches_sent->contains($profile->id)) &&
+                                  !(Auth::user()->profile->matches_recieved->contains($profile->id)))
                                 <img src="{{url ('/'. $profile->photo->filename)}}" a class="rounded mx-auto d-block" height="350" width="250" style="padding-top:20px">
                                 <a href="{{ route('user.profiles.show') }}"><h5 class="text-center" style="padding-top:20px;">{{$profile->user->name}}</h5></a>
                                 <p class="text-center">{{$profile->dob}}</p>
                                 <p class="text-center">{{$profile->sign->title}}</p>
                                 <p class="text-center">{{$profile->gender->title}}</p>
-                                @if(!(Auth::user()->profile->matches_sent->contains($profile->id)) &&
-                                    !(Auth::user()->profile->matches_recieved->contains($profile->id)))
+                                {{-- @if(!(Auth::user()->profile->matches_sent->contains($profile->id)) &&
+                                    !(Auth::user()->profile->matches_recieved->contains($profile->id))) --}}
                                     <form method='post'>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                       <input type="hidden" name="matcher_id" value="{{Auth::user()->profile->id}}">
