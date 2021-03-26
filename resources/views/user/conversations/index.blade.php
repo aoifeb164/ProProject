@@ -144,7 +144,10 @@
                                 <label for="recipient">Recipient</label>
                                 <br>
                                 <select name="recipient_id">
-                                    @foreach ($profiles as $profile)
+                                    @foreach ($matches_sent as $profile)
+                                    <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
+                                    @endforeach
+                                    @foreach ($matches_recieved as $profile)
                                     <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
                                     @endforeach
                                 </select>

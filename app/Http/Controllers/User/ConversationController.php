@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-03-25T18:08:44+00:00
+# @Last modified time: 2021-03-26T10:23:56+00:00
 
 
 
@@ -45,12 +45,16 @@ class ConversationController extends Controller
       $profiles = Profile::all();
       $joined = $user->profile->joined;
       $started = $user->profile->started;
+      $matches_sent = $user->profile->matches_sent;
+      $matches_recieved = $user->profile->matches_recieved;
     //  $conversations = $user->profile->started()->orderBy('id', 'asc')->paginate(8);
 
       return view('user.conversations.index', [
         'joined' => $joined,
         'started' =>$started,
-        'profiles' =>$profiles
+        'profiles' =>$profiles,
+        'matches_sent' => $matches_sent,
+        'matches_recieved' => $matches_recieved
       ]);
 
     }
@@ -64,16 +68,19 @@ class ConversationController extends Controller
      //when on the add conversation page display the conversations create form page
     public function create()
     {
-      $users = User::all();
-      $profiles = Profile::all();
+      $user = Auth::user();
+
       $conversations = Conversation::all();
       $messages = Message::all();
+      $matches_sent = $user->profile->matches_sent;
+      $matches_recieved = $user->profile->matches_recieved;
 
       return view('user.conversations.create', [
-      'users'=> $users,
-      'profiles'=> $profiles,
+
       'conversations'=> $conversations,
-      'messages' => $messages
+      'messages' => $messages,
+      'matches_sent' => $matches_sent,
+      'matches_recieved' => $matches_recieved
     ]);
     }
 
