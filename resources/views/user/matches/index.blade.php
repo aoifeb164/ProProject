@@ -14,6 +14,7 @@
                     <h3><u>Matches</u></h3>
                 </div>
             </div>
+        <a href="{{ route('user.conversations.create') }}" class="btn btn-primary" style="margin-left:880px">New Conversation</a>
 
             <div class="card-body">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

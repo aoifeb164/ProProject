@@ -41,7 +41,7 @@
                         @endforeach
                     </select>
                 </div>
-                <br>
+                {{-- <br>
                 <div class="form_group">
                     <label for="recipient">Recipient</label>
                     <br>
@@ -50,13 +50,25 @@
                         <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
                 <br>
                 <div class="form_group">
-                    <label for="message">Message</label>
+                    <label for="recipient">Recipient</label>
+                    <br>
+                    <select name="recipient_id">
+                        @foreach ($matches_sent as $profile)
+                        <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
+                        @endforeach
+                        @foreach ($matches_recieved as $profile)
+                        <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
+                        @endforeach
+                    </select>
+                <br>
+                <div class="form_group">
+                    <label for="message" style="padding-top:20px;">Message</label>
                     <input type="text" class="form-control" id="message" name="message" value="{{ old('message') }}" />
                 </div>
-                <br>
+              <br>
                 {{-- <div class="form_group">
                             <label for="sender">Sender</label>
                             <br>
@@ -66,7 +78,7 @@
                 @endforeach
                 </select>
             </div> --}}
-            <br>
+
 
             <div class="float-right">
                 <br>
