@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-03-11T17:41:01+00:00
+# @Last modified time: 2021-04-12T17:03:19+01:00
 
 
 
@@ -106,7 +106,7 @@ class MatchesController extends Controller
         $profile_matchee->delete();
 
         //message to appear when a doctor has been deleted
-        // $request->session()->flash('danger', 'Profile deleted successfully!');
+        $request->session()->flash('danger', 'Unmatch Sucessful');
         return redirect()->route('user.matches.index');
     }
 }

@@ -21,8 +21,7 @@
 
                 <div class="bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                      <div class="card" style="width:400px; height:570px;   margin: 0 auto;
-        float: none;">
+                      <div class= "card" style="width:400px; height:570px; margin: 0 auto; float: none; border">
                         <div class="carousel-inner">
                             @foreach( $profiles as $profile )
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">

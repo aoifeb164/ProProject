@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T14:07:54+00:00
-# @Last modified time: 2021-03-11T16:41:34+00:00
+# @Last modified time: 2021-04-12T17:09:57+01:00
 
 
 
@@ -81,10 +81,9 @@ class HomeController extends Controller
         return $weights->firstWhere('second_sign_id', $profile->sign_id)->weight;
       });
       //dd($rankedMatches);
-
       return view('user.home', [
        'profiles' => $rankedMatches
       ]);
-}
 
+}
 }
