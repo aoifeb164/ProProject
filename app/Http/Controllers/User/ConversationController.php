@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-04-15T17:37:47+01:00
+# @Last modified time: 2021-05-05T18:06:40+01:00
 
 
 
@@ -82,6 +82,7 @@ class ConversationController extends Controller
       'matches_sent' => $matches_sent,
       'matches_recieved' => $matches_recieved
     ]);
+      return redirect()->route('user.conversations.index');
     }
 
     /**
