@@ -79,7 +79,7 @@
 
         </div>
         <div class="col-md-2" style="padding: 0px">
-            <img src="/images/home/home.PNG" height="300" width="460" style="margin-top:370px;">
+            <img src="/images/home/image.PNG" height="300" width="420" style="margin-top:370px;">
           </div>
     </div>
 </div>
