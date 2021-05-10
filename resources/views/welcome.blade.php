@@ -17,7 +17,7 @@
                     </div>
                     @endif
 
-                    This is the welcome page! TEST
+                    This is the welcome page!
                     </br>
                     </br>
                     Read more <a href="{{ route('about') }}">about us</a>
