@@ -40,7 +40,38 @@
 
                             <tbody>
                                 @foreach ($matches_sent as $profile)
-                                {{-- get profiles by id and display the following information --}}
+                                  @if($profile->pivot->status== 'pending')
+                                    <tr data-id="{{ $profile->id }}">
+                                        {{-- <td><h5>{{ $profile->user->name }}</h5>
+                                        </td> --}}
+                                                                            <td><img src="{{url ('/'. $profile->photo->filename)}}" a class="mx-auto d-block" height="50" width="50" style="border-radius:125px"></td>
+                                        <td><a href="{{ route('user.profiles.show') }}">
+                                                <h5>{{$profile->user->name}}</h5>
+                                            </a></td>
+                                        <td>{{ $profile->dob }}</td>
+                                        <td>{{ $profile->sign->title }}</td>
+                                        <td><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="#08a121" d="M253.924 127.592a64 64 0 1 0 64 64a64.073 64.073 0 0 0-64-64zm0 96a32 32 0 1 1 32-32a32.037 32.037 0 0 1-32 32z"/><path fill="#08a121" d="M376.906 68.515A173.922 173.922 0 0 0 108.2 286.426l120.907 185.613a29.619 29.619 0 0 0 49.635 0l120.911-185.613a173.921 173.921 0 0 0-22.747-217.911zm-4.065 200.444l-118.916 182.55l-118.917-182.55c-36.4-55.879-28.593-130.659 18.563-177.817a141.92 141.92 0 0 1 200.708 0c47.156 47.158 54.962 121.938 18.562 177.817z"/></svg>{{ $profile->location }}</td>
+                                        <td>{{ $profile->pivot->status }}</td>
+                                        <td>
+                                      {{-- <form method='post'>
+                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                          <input type="hidden" name="matcher_id" value="{{$profile->pivot->matcher_id}}">
+                                          <input type="hidden" name="matchee_id" value="{{$profile->pivot->matchee_id}}">
+                                          <input type="hidden" name="status" id="match-status" value="" />
+                                          <button type="submit" id="accept" class="btn btn-outline-success" style="border-radius:100px; margin:10px;" formaction="{{route('user.matches.accept')}}">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                              </svg>
+                                          </button>
+                                          <button type="submit" id="reject" class="btn btn-outline-danger" style="border-radius:100px; margin:10px;" formaction="{{route('user.matches.reject')}}">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                  <path
+                                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                              </svg>
+                                          </button>
+
+                                      </form> --}}
+                                      @endif
 
                                       @if($profile->pivot->status== 'accepted')
                                         <tr data-id="{{ $profile->id }}">
@@ -100,10 +131,23 @@
                                 {{-- get profiles by id and display the following information --}}
 
                                         @if($profile->pivot->status== 'pending')
+                                          <tr data-id="{{ $profile->id }}">
+                                              {{-- <td><h5>{{ $profile->user->name }}</h5>
+                                              </td> --}}
+                                                                                  <td><img src="{{url ('/'. $profile->photo->filename)}}" a class="mx-auto d-block" height="50" width="50" style="border-radius:125px"></td>
+                                              <td><a href="{{ route('user.profiles.show') }}">
+                                                      <h5>{{$profile->user->name}}</h5>
+                                                  </a></td>
+                                              <td>{{ $profile->dob }}</td>
+                                              <td>{{ $profile->sign->title }}</td>
+                                              <td><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="#08a121" d="M253.924 127.592a64 64 0 1 0 64 64a64.073 64.073 0 0 0-64-64zm0 96a32 32 0 1 1 32-32a32.037 32.037 0 0 1-32 32z"/><path fill="#08a121" d="M376.906 68.515A173.922 173.922 0 0 0 108.2 286.426l120.907 185.613a29.619 29.619 0 0 0 49.635 0l120.911-185.613a173.921 173.921 0 0 0-22.747-217.911zm-4.065 200.444l-118.916 182.55l-118.917-182.55c-36.4-55.879-28.593-130.659 18.563-177.817a141.92 141.92 0 0 1 200.708 0c47.156 47.158 54.962 121.938 18.562 177.817z"/></svg>{{ $profile->location }}</td>
+                                              <td>{{ $profile->pivot->status }}</td>
+                                              <td>
                                             <form method='post'>
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="hidden" name="matcher_id" value="{{$profile->pivot->matcher_id}}">
                                                 <input type="hidden" name="matchee_id" value="{{$profile->pivot->matchee_id}}">
+
                                                 <input type="hidden" name="status" id="match-status" value="" />
                                                 <button type="submit" id="accept" class="btn btn-outline-success" style="border-radius:100px; margin:10px;" formaction="{{route('user.matches.accept')}}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
