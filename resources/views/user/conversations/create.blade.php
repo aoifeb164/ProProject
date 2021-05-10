@@ -64,7 +64,7 @@
                 <br>
                 <div class="form_group">
                     <label for="message" style="padding-top:20px;">Message</label>
-                    <input type="text" class="form-control" id="message" name="message" value="{{ old('message') }}" style="height:100px" />
+                    <input type="text" class="form-control" id="message" name="message" value="{{ old('message') }}" />
                 </div>
               <br>
                 {{-- <div class="form_group">
