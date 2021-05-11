@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <div class="header text-center">
+            <div class="header" style="padding-left:15px;">
                 <h2>{{ __('Register Now') }}</h2>
             </div>
 
@@ -71,7 +71,7 @@
                         <div class="col">
                             <div class="form">
                                 <div class="mb-3" style="width:450px;">
-                                    <label for="password-confirm" class="col-md-4 col-form-label">{{ __('Confirm') }}</label>
+                                    <label for="password-confirm" class="col-md-4 col-form-label">{{ __('Confirm Password') }}</label>
 
                                     <div class="col">
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -146,14 +146,14 @@
                     <label for="bio" class="col-md-4 col-form-label">{{ __('Bio') }}</label>
 
                     <div class="col-md-6">
-                        <input id="bio" type="bio" class="form-control" name="bio" required autocomplete="bio" style="height:160px;">
+                        <input id="bio" type="bio" class="form-control" name="bio" required autocomplete="bio">
                     </div>
                 </div>
             </div>
 
             <div class="form">
                 <div class="mb-3" style="width:1400px;">
-                    <H4 style="padding-left:20px"> Interested In:</h4>
+                    <H4 style="padding-left:20px; padding-top:10px; padding-bottom:10px"> Interested In:</h4>
                     <H5 style="padding-left:20px"> Star Signs:</h5>
                     <div class="form-check form-check-inline" style="padding-left:20px;">
                         <input class="form-check-input" type="checkbox" id="sign_id" value="option1">
@@ -226,8 +226,10 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary" style="margin-top:20px; margin-left:100px;">
-                            {{ __('Register') }}
+                        <button type="submit" class="btn" style="margin-top:20px; margin-left:560px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="purple" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                          </svg>
                         </button>
                     </div>
                 </div>

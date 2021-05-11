@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-05-05T18:06:40+01:00
+# @Last modified time: 2021-05-11T16:29:43+01:00
 
 
 
@@ -97,23 +97,21 @@ class ConversationController extends Controller
     {
       $request->validate([
         'title' => 'required|max:191',
-        'sender_id' => 'required',
         'recipient_id' => 'required',
 
         'message' => 'required',
-        'sender_id'=>'required'
       ]);
 
       $conversation = new Conversation();
       $conversation->title = $request->input('title');
-      $conversation->sender_id = $request->input('sender_id');
+      $conversation->sender_id = Auth::user()->profile->id;
       $conversation->recipient_id = $request->input('recipient_id');
       $conversation->save();
 
       $message = new Message();
       $message->message = $request->input('message');
       $message->conversation_id = $conversation->id;
-      $message->sender_id = $request->input('sender_id');
+      $message->sender_id =  Auth::user()->profile->id;
       $message->save();
 
       return redirect()->route('user.conversations.index');

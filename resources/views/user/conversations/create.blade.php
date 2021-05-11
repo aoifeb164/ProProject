@@ -30,15 +30,15 @@
                             <label for="sender_id">Sender id</label>
                             <input type="text" class="form-control" id="sender_id" name="sender_id" value="{{ old('sender_id') }}" />
                 </div> --}}
-                <div class="form_group">
+                {{-- <div class="form_group">
                     <label for="sender">Sender</label>
-                    <br>
-                    <select name="sender_id">
+                    <br> --}}
+                    {{-- <select name="sender_id">
                         @foreach ($profiles as $profile)
                         <option value="{{ $profile->id }}" {{ (old('sender_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
                 {{-- <br>
                 <div class="form_group">
                     <label for="recipient">Recipient</label>
