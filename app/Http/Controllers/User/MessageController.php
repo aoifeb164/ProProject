@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-05-12T16:10:43+01:00
+# @Last modified time: 2021-05-12T17:01:41+01:00
 
 
 
@@ -46,15 +46,6 @@ class MessageController extends Controller
       return view('user.messages.index', [
         'messages' => $messages
       ]);
-
-      // $user = Auth::user();
-      //
-      // //display only the patient who is logged in visits and order by date
-      // $visits = $user->patient->visits()->orderBy('date', 'asc')->paginate(8);
-      //
-      // return view('patient.visits.index', [
-      //   'visits' => $visits
-      // ]);
 
     }
 

@@ -45,16 +45,6 @@
                     <textarea type="text" class="form-control" id="message" rows="3" name="message" value="{{ old('message') }}"> </textarea>
                 </div>
               <br>
-                {{-- <div class="form_group">
-                            <label for="sender">Sender</label>
-                            <br>
-                            <select name="sender_id">
-                                @foreach ($profiles as $profile)
-                                <option value="{{ $profile->user->name }}" {{ (old('sender_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
-                @endforeach
-                </select>
-            </div> --}}
-
 
             <div class="float-right">
                 <br>

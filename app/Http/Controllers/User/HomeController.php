@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T14:07:54+00:00
-# @Last modified time: 2021-05-05T18:11:55+01:00
+# @Last modified time: 2021-05-12T17:01:25+01:00
 
 
 
@@ -37,12 +37,6 @@ class HomeController extends Controller
 
     public function index()
     {
-     //   $user = Auth::user();
-     //  $profiles = Profile::all();
-     //  return view('user.home', [
-     // 'profiles' => $profiles,
-     //
-     //  ]);
 
       $profiles1 = DB::select(
       "SELECT DISTINCT p4.id

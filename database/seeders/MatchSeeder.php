@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-02-04T14:47:58+00:00
-# @Last modified time: 2021-03-11T17:25:11+00:00
+# @Last modified time: 2021-05-12T17:07:00+01:00
 
 
 
@@ -45,13 +45,7 @@ class MatchSeeder extends Seeder
             }
           }
         }
-        // $found =
-        //   $profile_matchee->matches_recieved->contains(function($profile, $index) use ($profile_matcher) {
-        //     return $profile->id == $profile_matcher->id; }
-        //   ) ||
-        //   $profile_matcher->matches_recieved->contains(function($profile, $index) use ($profile_matchee) {
-        //     return $profile->id == $profile_matchee->id; }
-        //   );
+
         if(!$found){
           $profile_matcher->matches_sent()->attach($profile_matchee->id, ['status'=>$status]);
         }

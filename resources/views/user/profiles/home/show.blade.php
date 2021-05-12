@@ -5,12 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            {{-- <div class="card-header">{{ __('Dashboard') }}
-        </div> --}}
-
         <div class="card" style=" width:800px; margin-top:20px; padding-top:20px;">
             <div class="card-body">
-                {{-- <td>{{ $profile->photo->filename }}</td> --}}
                 <div class="text-center">
                     <img src="{{url ('/'. $profile->photo->filename)}}" style="width:200px; height:240px; border-radius:125px;" />
                 </div>
@@ -44,7 +40,6 @@
 
                 <div class="row" style="width:750px;">
 
-                    {{-- <h5>Recommended Profiles:</h5> --}}
 
                     <div class="bd-example">
 

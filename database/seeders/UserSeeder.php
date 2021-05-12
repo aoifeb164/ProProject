@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:00:54+00:00
-# @Last modified time: 2021-03-09T16:53:40+00:00
+# @Last modified time: 2021-05-12T17:07:12+01:00
 
 
 namespace Database\Seeders;
@@ -67,14 +67,5 @@ class UserSeeder extends Seeder
           }
         }
 
-
-
-        // for ($i = 1; $i <=30; $i++) {
-        //   $User = User::factory()->create();
-        //   $user->roles()->attach($role_user);
-        //   $customer = Customer::factory()->create([]
-        //   'user_id' => $user->id,
-        // ]);
-        // }
     }
 }

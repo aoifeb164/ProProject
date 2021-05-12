@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-05-12T16:11:32+01:00
+# @Last modified time: 2021-05-12T17:01:16+01:00
 
 
 
@@ -137,19 +137,6 @@ class ConversationController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-     //when requesting to edit a conversation display the conversation edit page and get the conversation by id from the conversations table
-    public function edit($id)
-    {
-
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -157,18 +144,6 @@ class ConversationController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when updating a new conversation the fields are validated by making sure they have inputed and they are using correct information format
-    public function update(Request $request, $id)
-    {
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     //when deleting a conversation get them by id in the conversations table and redirect back to conversation index page
     public function destroy(Request $request, $id)
