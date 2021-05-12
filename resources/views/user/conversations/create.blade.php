@@ -26,29 +26,7 @@
                             <input type="text" class="form-control" id="title" name="title" value="{{ old('') }}" />
                         </div>
                         <br>
-                        {{-- <div class="form_group">
-                            <label for="sender_id">Sender id</label>
-                            <input type="text" class="form-control" id="sender_id" name="sender_id" value="{{ old('sender_id') }}" />
-                </div> --}}
-                {{-- <div class="form_group">
-                    <label for="sender">Sender</label>
-                    <br> --}}
-                    {{-- <select name="sender_id">
-                        @foreach ($profiles as $profile)
-                        <option value="{{ $profile->id }}" {{ (old('sender_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
-                        @endforeach
-                    </select>
-                </div> --}}
-                {{-- <br>
-                <div class="form_group">
-                    <label for="recipient">Recipient</label>
-                    <br>
-                    <select name="recipient_id">
-                        @foreach ($profiles as $profile)
-                        <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
-                        @endforeach
-                    </select>
-                </div> --}}
+
                 <br>
                 <div class="form_group">
                     <label for="recipient">Recipient</label>
@@ -64,7 +42,7 @@
                 <br>
                 <div class="form_group">
                     <label for="message" style="padding-top:20px;">Message</label>
-                    <input type="text" class="form-control" id="message" name="message" value="{{ old('message') }}" />
+                    <textarea type="text" class="form-control" id="message" rows="3" name="message" value="{{ old('message') }}"> </textarea>
                 </div>
               <br>
                 {{-- <div class="form_group">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+
     {{-- <pre>{{$errors}}</pre> --}}
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,7 +15,7 @@
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <div class="form">
+                            {{-- <div class="form"> --}}
                                 <div class="mb-3" style="width:450px;">
                                     <label for="name" class="col col-form-label">{{ __('Name') }}</label>
 
@@ -28,11 +28,11 @@
                                         </span>
                                         @enderror
                                     </div>
-                                </div>
+                                {{-- </div> --}}
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form">
+                            {{-- <div class="form"> --}}
                                 <div class="mb-3" style="width:450px;">
                                     <label for="email" class="col-md-4 col-form-label">{{ __('Email Address') }}</label>
 
@@ -46,13 +46,13 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            <div class="form">
+                            {{-- <div class="form"> --}}
                                 <div class="mb-3" style="width:450px;">
                                     <label for="password" class="col-md-4 col-form-label">{{ __('Password') }}</label>
 
@@ -65,11 +65,11 @@
                                         </span>
                                         @enderror
                                     </div>
-                                </div>
+                                {{-- </div> --}}
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form">
+                            {{-- <div class="form"> --}}
                                 <div class="mb-3" style="width:450px;">
                                     <label for="password-confirm" class="col-md-4 col-form-label">{{ __('Confirm Password') }}</label>
 
@@ -78,12 +78,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {{-- </div> --}}
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            <div class="form">
+                            {{-- <div class="form"> --}}
                                 <div class="mb-3" style="width:450px;">
                                     <label for="dob" class="col-md-4 col-form-label">{{ __('Date of Birth') }}</label>
 
@@ -91,10 +91,10 @@
                                         <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required autocomplete="dob">
                                     </div>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                         <div class="col">
-                            <div class="form">
+                            {{-- <div class="form"> --}}
                                 <div class="mb-3" style="width:450px;">
                                     <label for="location" class="col-md-4 col-form-label">{{ __('Location') }}</label>
 
@@ -102,7 +102,7 @@
                                         <input id="location" type="location" class="form-control" name="location" required autocomplete="location">
                                     </div>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
 
@@ -117,7 +117,7 @@
             </div> --}}
             <div class="row">
                 <div class="col">
-                    <div class="form">
+                    {{-- <div class="form"> --}}
                         <div class="mb-3" style="width:450px;">
                             <label for="gender" class="col-md-4 col-form-label">{{ __('Gender') }}</label>
 
@@ -125,11 +125,11 @@
                                 <input id="gender_id" type="gender" class="form-control" name="gender_id" required autocomplete="gender">
                             </div>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                 </div>
 
                 <div class="col">
-                    <div class="form">
+                    {{-- <div class="form"> --}}
                         <div class="mb-3" style="width:450px;">
                             <label for="sign" class="col-md-4 col-form-label">{{ __('Sign') }}</label>
 
@@ -137,22 +137,22 @@
                                 <input id="sign_id" type="sign" class="form-control" name="sign_id" required autocomplete="sign">
                             </div>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </div>
 
-            <div class="form">
-                <div class="mb-3" style="width:1940px;">
+            {{-- <div class="form"> --}}
+                <div class="mb-8">
                     <label for="bio" class="col-md-4 col-form-label">{{ __('Bio') }}</label>
 
-                    <div class="col-md-6">
-                        <input id="bio" type="bio" class="form-control" name="bio" required autocomplete="bio">
+                    <div class="col">
+                        <textarea type="text" class="form-control" id="message" rows="3" name="message" style="width:940px;" value="{{ old('message') }}"> </textarea>
                     </div>
-                </div>
-            </div>
 
-            <div class="form">
-                <div class="mb-3" style="width:1400px;">
+            {{-- </div> --}}
+
+            {{-- <div class="form"> --}}
+                <div class="mb-3" style="width:960px;">
                     <H4 style="padding-left:20px; padding-top:10px; padding-bottom:10px"> Interested In:</h4>
                     <H5 style="padding-left:20px"> Star Signs:</h5>
                     <div class="form-check form-check-inline" style="padding-left:20px;">
@@ -235,7 +235,7 @@
                 </div>
                 </form>
 
-            </div>
+            {{-- </div> --}}
         </div>
     </div>
 </div>

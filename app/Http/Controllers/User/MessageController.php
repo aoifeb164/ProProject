@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-03-24T16:08:31+00:00
+# @Last modified time: 2021-05-12T16:10:43+01:00
 
 
 
@@ -58,38 +58,6 @@ class MessageController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-     //when on the add conversation page display the conversations create form page
-    public function create()
-    {
-
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-   //when storing a new conversation the fields are validated by making sure they have entered data and inputed using correct information format
-    public function store(Request $request)
-    {
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
      //when requesting the show conversation page display the conversations show page and get the conversation by id from the conversations table
     public function show($id)
@@ -108,32 +76,6 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when requesting to edit a conversation display the conversation edit page and get the conversation by id from the conversations table
-    public function edit($id)
-    {
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-     //when updating a new conversation the fields are validated by making sure they have inputed and they are using correct information format
-    public function update(Request $request, $id)
-    {
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     //when deleting a conversation get them by id in the conversations table and redirect back to conversation index page
     public function destroy(Request $request, $id)

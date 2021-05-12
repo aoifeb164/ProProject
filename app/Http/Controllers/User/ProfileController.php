@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-05-11T15:00:36+01:00
+# @Last modified time: 2021-05-12T16:05:24+01:00
 
 
 
@@ -50,6 +50,14 @@ class ProfileController extends Controller
       $user = Auth::user();
       $profile = $user->profile;
       return view('user.profiles.show', [
+      'profile' => $profile
+      ]);
+    }
+
+    public function display($id)
+    {
+      $profile = Profile::findOrFail($id);
+      return view('user.profiles.home.show', [
         'profile' => $profile
       ]);
     }

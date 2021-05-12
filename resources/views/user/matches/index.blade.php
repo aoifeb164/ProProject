@@ -44,7 +44,7 @@
                                     <tr data-id="{{ $profile->id }}">
                                         {{-- <td><h5>{{ $profile->user->name }}</h5>
                                         </td> --}}
-                                                                            <td  style="padding-top:20px;"><img src="{{url ('/'. $profile->photo->filename)}}" a class="mx-auto d-block" height="50" width="50" style="border-radius:125px"></td>
+                                        <td  style="padding-top:20px;"><img src="{{url ('/'. $profile->photo->filename)}}" a class="mx-auto d-block" height="50" width="50" style="border-radius:125px"></td>
                                         <td  style="padding-top:30px;"><a href="{{ route('user.profiles.show') }}">
                                                 <h5>{{$profile->user->name}}</h5>
                                             </a></td>

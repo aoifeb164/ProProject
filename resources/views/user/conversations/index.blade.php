@@ -55,6 +55,7 @@
                                         </a>
                                     </td>
                                     {{-- <td><img src="{{url ('/'. $profile->photo->filename)}}" a class="mx-auto d-block" height="50" width="50" style="border-radius:125px"></td> --}}
+
                                     <td style="padding-top:30px;">
                                         <p style="padding-left:100px">{{ $conversation->sender->user->name }}</p>
                                     </td>

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-03T10:21:46+00:00
-# @Last modified time: 2021-03-12T17:39:39+00:00
+# @Last modified time: 2021-05-12T15:23:41+01:00
 
 
 
@@ -45,6 +45,7 @@ Route::get('/admin/profiles/{id}', [AdminProfileController::class, 'show'])->nam
 Route::delete('/admin/profiles/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profiles.destroy');
 
 Route::get('/user/profiles', [UserProfileController::class, 'show'])->name('user.profiles.show');
+Route::get('/user/profiles{id}', [UserProfileController::class, 'display'])->name('user.profiles.home.show');
 Route::put('/user/profiles', [UserProfileController::class, 'update'])->name('user.profiles.update');
 Route::get('/user/profiles/edit', [UserProfileController::class, 'edit'])->name('user.profiles.edit');
 Route::post('/user/profiles/store', [UserProfileController::class, 'store'])->name('user.profiles.store');

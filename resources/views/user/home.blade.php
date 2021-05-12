@@ -25,17 +25,17 @@
                             <div class="carousel-inner">
                                 @foreach( $profiles as $profile )
                                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+
                                     @if(!(Auth::user()->profile->matches_sent->contains($profile->id)) &&
                                         !(Auth::user()->profile->matches_recieved->contains($profile->id)))
                                         <img src="{{url ('/'. $profile->photo->filename)}}" a class="rounded mx-auto d-block" height="350" width="250" style="padding-top:20px">
-                                        <a href="{{ route('user.profiles.show') }}">
+                                        <a href="{{ route('user.profiles.home.show', $profile->id) }}">
                                             <h5 class="text-center" style="padding-top:20px;">{{$profile->user->name}}</h5>
                                         </a>
                                         <p class="text-center">{{$profile->dob}}</p>
                                         <p class="text-center">{{$profile->sign->title}}</p>
                                         <p class="text-center">{{$profile->gender->title}}</p>
-                                        {{-- @if(!(Auth::user()->profile->matches_sent->contains($profile->id)) &&
-                                    !(Auth::user()->profile->matches_recieved->contains($profile->id))) --}}
+
                                         <form method='post'>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input type="hidden" name="matcher_id" value="{{Auth::user()->profile->id}}">
