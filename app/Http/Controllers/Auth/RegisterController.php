@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:54:28+00:00
-# @Last modified time: 2021-03-23T16:04:52+00:00
+# @Last modified time: 2021-05-13T13:07:54+01:00
 
 
 
@@ -11,7 +11,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Gender;
+use App\Models\Sign;
 use App\Models\Role;
+use App\Models\Photo;
 use App\Models\Profile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -57,6 +59,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -66,7 +69,10 @@ class RegisterController extends Controller
             'dob' => ['required', 'date', 'date_format:Y-m-d'],
             'location' => ['required', 'string', 'max:50'],
             'gender_id' => 'required',
-            'sign_id' => 'required'
+            'sign_id' => 'required',
+
+            'genders' => 'required',
+            'signs' => 'required'
 
         ]);
     }
@@ -79,6 +85,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      $images = [
+        'images/profiles/profile_01.jpg',
+        'images/profiles/profile_02.jpg',
+        'images/profiles/profile_03.jpg',
+        'images/profiles/profile_04.jpg',
+        'images/profiles/profile_05.jpg'
+
+      ];
+
+            $faker = \Faker\Factory::create();
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -94,9 +111,38 @@ class RegisterController extends Controller
             'user_id' => $user->id,
             'gender_id' => $data['gender_id'],
             'sign_id' => $data['gender_id'],
-            'photo_id'=>2
+            'photo_id'=>null
         ]);
+
+        $photo = new Photo();
+        $photo->caption = $faker->realText(20);
+        $photo->filename = $images[array_rand($images)];
+        $photo->profile_id = $profile->id;
+        $photo->save();
+        $profile->photo_id = $photo->id;
+        $profile->save();
+
+        $genders=$data['genders'];
+        foreach ($genders as $gender){
+          $profile->genders()->attach($gender);
+        }
+
+        $signs=$data['signs'];
+        foreach ($signs as $sign){
+          $profile->signs()->attach($sign);
+        }
+
         return $user;;
 
+    }
+
+    protected function showRegistrationForm()
+    {
+      $genders = Gender::all();
+      $signs = Sign::all();
+      return view ('auth.register', [
+        'genders'=>$genders,
+        'signs'=>$signs
+      ]);
     }
 }

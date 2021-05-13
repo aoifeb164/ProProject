@@ -37,7 +37,7 @@
                                 @foreach ($joined as $conversation)
                                 {{-- get profiles by id and display the following information --}}
                                 <tr data-id="{{ $conversation->id }}">
-                                    <td style="padding-top:30px;"><a href="{{ route('user.messages.index') }}">
+                                    <td style="padding-top:30px;"><a href="{{ route('user.messages.index', $conversation->id) }}">
                                             <h5 style="padding-left:80px; color:black;">{{ $conversation->title }}</h5>
                                         </a>
                                     </td>
@@ -80,11 +80,11 @@
                                 @foreach ($started as $conversation)
                                 {{-- get profiles by id and display the following information --}}
                                 <tr data-id="{{ $conversation->id }}">
-                                    <td style="padding-top:30px;"><a href="{{ route('user.messages.index') }}">
+                                    <td style="padding-top:30px;"><a href="{{ route('user.messages.index', $conversation->id) }}">
                                             <h5 style="padding-left:80px; color:black;">{{ $conversation->title }}</h5>
                                         </a>
                                     </td>
-                                    
+
                                     <td style="padding-top:30px;">
                                         <p>{{ $conversation->recipient->user->name }}</p>
                                     </td>

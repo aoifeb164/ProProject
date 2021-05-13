@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-05-12T17:01:49+01:00
+# @Last modified time: 2021-05-13T18:22:54+01:00
 
 
 
@@ -119,10 +119,7 @@ class ProfileController extends Controller
       $user->email = $request->input('email');
       $user->save();
 
-      //message to appear when a doctor has been edited
-      // $request->session()->flash('info', 'Profile edited successfully!');
 
-      //when the patient has been stored redirect back to the index page
       return redirect()->route('user.profiles.show');
     }
 
@@ -138,7 +135,7 @@ class ProfileController extends Controller
     {
       $user = Auth::user();
       $profile = $user->profile;
-        $profile->delete();
+      $profile->delete();
 
         //message to appear when a doctor has been deleted
         // $request->session()->flash('danger', 'Profile deleted successfully!');

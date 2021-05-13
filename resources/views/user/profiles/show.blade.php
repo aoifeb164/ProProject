@@ -7,7 +7,6 @@
 
         <div class="card" style=" width:800px; margin-top:20px; padding-top:20px;">
             <div class="card-body">
-
                 <div class="text-center">
                     <img src="{{url ('/'. $profile->photo->filename)}}" style="width:200px; height:240px; border-radius:125px;" />
                 </div>
@@ -16,6 +15,7 @@
                 <div class="text-center">
                     <td>
                         <h3 style="padding-top:40px;">{{ $profile->user->name }}</h3>
+                        
                     </td>
                 </div>
 

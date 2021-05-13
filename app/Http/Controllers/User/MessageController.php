@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-05-12T17:01:41+01:00
+# @Last modified time: 2021-05-13T13:23:37+01:00
 
 
 
@@ -38,10 +38,10 @@ class MessageController extends Controller
      */
 
       //when requesting the index page display the conversations index and get all the conversations from the conversations table
-      public function index()
+      public function index($id)
       {
         $user = Auth::user();
-        $messages = Message::all();
+        $messages = Conversation::findOrFail($id)->messages;
 
       return view('user.messages.index', [
         'messages' => $messages
