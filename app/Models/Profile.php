@@ -13,6 +13,16 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+    protected $fillable = [
+      'bio',
+      'dob',
+      'location' ,
+      'user_id',
+      'gender_id' ,
+      'sign_id',
+      'photo_id'
+];
+
     public function photos(){
       return $this->hasMany(Photo::class);
     }

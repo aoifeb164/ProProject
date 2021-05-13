@@ -45,8 +45,8 @@ Route::get('/admin/profiles/{id}', [AdminProfileController::class, 'show'])->nam
 
 
 
-// Route::get('/admin/profiles/{id}/edit', [AdminProfileController::class, 'edit'])->name('admin.profiles.edit');
-// Route::put('/admin/profiles{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
+Route::get('/admin/profiles/{id}/edit', [AdminProfileController::class, 'edit'])->name('admin.profiles.edit');
+Route::put('/admin/profiles/{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
 Route::delete('/admin/profiles/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profiles.destroy');
 
 Route::get('/user/profiles', [UserProfileController::class, 'show'])->name('user.profiles.show');

@@ -87,7 +87,12 @@
                                     {{-- creating a view, edit and delete button --}}
                                     <a href="{{ route('admin.profiles.show', $profile->id) }}" class="btn btn-primary">View</a>
                                     <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Edit</a>
-                                    <a href="{{ route('admin.profiles.destroy', $profile->id) }}" class="btn btn-danger">Delete</a>
+                                    <form style="display:inline-block" method="POST" action="{{ route('admin.profiles.destroy', $profile->id) }}" method = "post">
+                          <input type="hidden" name="_method" value="DELETE">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <button type="submit" class="form-control btn btn-danger">Delete</a>
+
+                      </form>
 
                                 </td>
                             </tr>
