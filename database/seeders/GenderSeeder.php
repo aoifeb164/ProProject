@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T13:01:16+00:00
-# @Last modified time: 2021-01-08T10:22:43+00:00
+# @Last modified time: 2021-03-09T16:38:13+00:00
 
 
 
@@ -25,6 +25,14 @@ class GenderSeeder extends Seeder
         $female = new Gender();
         $female->title ='female';
         $female->save();
+
+        $nonBinary = new Gender();
+        $nonBinary->title ='nonBinary';
+        $nonBinary->save();
+
+        $genderNeutral = new Gender();
+        $genderNeutral->title ='genderNeutral';
+        $genderNeutral->save();
 
     }
 }

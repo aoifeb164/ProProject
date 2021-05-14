@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-02-04T14:47:58+00:00
-# @Last modified time: 2021-02-12T10:58:51+00:00
+# @Last modified time: 2021-05-12T17:07:00+01:00
 
 
 
@@ -21,7 +21,7 @@ class MatchSeeder extends Seeder
     {
       $faker = \Faker\Factory::create();
 
-      $numMatches = rand(10,20);
+      $numMatches = rand(500,500);
       $validStatus = ['pending', 'accepted', 'rejected'];
       for ($j = 0; $j != $numMatches; $j++){
         $profile_matcher = Profile::all()->random(1)->first();
@@ -30,7 +30,25 @@ class MatchSeeder extends Seeder
           $profile_matchee = Profile::all()->random(1)->first();
         }
         $status = $validStatus[ array_rand($validStatus)];
-        $profile_matcher->matches_sent()->attach($profile_matchee->id, ['status'=>$status]);
+        $found = false;
+        foreach ($profile_matchee->matches_recieved as $profile) {
+          if ($profile->id == $profile_matcher->id) {
+            $found = true;
+            break;
+          }
+        }
+        if (!$found) {
+          foreach ($profile_matcher->matches_recieved as $profile) {
+            if ($profile->id == $profile_matchee->id) {
+              $found = true;
+              break;
+            }
+          }
+        }
+
+        if(!$found){
+          $profile_matcher->matches_sent()->attach($profile_matchee->id, ['status'=>$status]);
+        }
       }
     }
 }

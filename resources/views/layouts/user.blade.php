@@ -13,6 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -38,7 +39,7 @@
                         <a class="nav-link" href="{{ route('user.home') }}">{{ __('Home') }}</a>
                         <a class="nav-link" href="{{ route('user.conversations.index') }}">{{ __('Inbox') }}</a>
                         <a class="nav-link" href="{{ route('user.matches.index') }}">{{ __('Matches') }}</a>
-                        {{-- <a class="nav-link" href="{{ route('user.profiles.show', $profile->id) }}">{{ __('Profile') }}</a> --}}
+
 
                     </ul>
 
@@ -65,7 +66,8 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                {{-- <a class="nav-link" href="{{ route('user.profiles.edit', $profile->id) }}">{{ __('Settings') }}</a> --}}
+                                  <a class="nav-link" href="{{ route('user.profiles.show') }}">{{ __('Profile') }}</a>
+                                <a class="nav-link" href="{{ route('user.profiles.edit') }}">{{ __('Settings') }}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

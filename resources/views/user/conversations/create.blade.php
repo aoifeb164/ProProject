@@ -3,11 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    Add new message
-                </div>
+<h5 style="padding-left:20px; padding-top:20px;">Create new Conversation:</h5>
 
                 <div class='card-body'>
                     @if ($errors->any())
@@ -28,36 +26,39 @@
                             <input type="text" class="form-control" id="title" name="title" value="{{ old('') }}" />
                         </div>
                         <br>
-                        <div class="form_group">
-                            <label for="sender_id">Sender id</label>
-                            <input type="text" class="form-control" id="sender_id" name="sender_id" value="{{ old('sender_id') }}" />
-                        </div>
-                        <br>
-                        <div class="form_group">
-                            <label for="recipient_id">Recipient id</label>
-                            <input type="text" class="form-control" id="recipient_id" name="recipient_id" value="{{ old('recipient_id') }}" />
-                        </div>
-                        <br>
-                        <div class="form_group">
-                            <label for="message">Message</label>
-                            <input type="text" class="form-control" id="message" name="message" value="{{ old('message') }}" />
-                        </div>
-                        <br>
-                        <div class="form_group">
-                            <label for="sender_id">sender_id</label>
-                            <input type="text" class="form-control" id="sender_id" name="sender_id" value="{{ old('sender_id') }}" />
-                        </div>
-                        <br>
 
-                        <div class="float-right">
-                            <br>
-                            {{-- creating cancel and submit button --}}
-                            <a href="{{ route('user.messages.index') }}" class="btn btn-default">Cancel</a>
-                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                    </form>
+                <br>
+                <div class="form_group">
+                    <label for="recipient">Recipient</label>
+                    <br>
+                    <select name="recipient_id">
+                        @foreach ($matches_sent as $profile)
+                        <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
+                        @endforeach
+                        @foreach ($matches_recieved as $profile)
+                        <option value="{{ $profile->id }}" {{ (old('recipient_id', $profile->user->name) == $profile->user->name) ? "selected" : "" }}>{{ $profile->user->name }}</option>
+                        @endforeach
+                    </select>
+                <br>
+                <div class="form_group">
+                    <label for="message" style="padding-top:20px;">Message</label>
+                    <textarea type="text" class="form-control" id="message" rows="3" name="message" value="{{ old('message') }}"> </textarea>
                 </div>
+              <br>
+
+            <div class="float-right">
+                <br>
+                {{-- creating cancel and submit button --}}
+                <a href="{{ route('user.conversations.index') }}" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="purple" class="bi bi-arrow-right" viewBox="0 0 16 16">
+<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg>
+                </button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

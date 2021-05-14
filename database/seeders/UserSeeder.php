@@ -1,6 +1,10 @@
 <?php
 # @Date:   2020-11-06T13:00:54+00:00
+<<<<<<< HEAD
 # @Last modified time: 2021-02-26T10:29:28+00:00
+=======
+# @Last modified time: 2021-05-12T17:07:12+01:00
+>>>>>>> aoife
 
 
 namespace Database\Seeders;
@@ -34,34 +38,8 @@ class UserSeeder extends Seeder
         $admin->save();
         $admin->roles()->attach($role_admin);
 
-        $user = new User();
-        $user->name = 'Ronan Woods';
-        $user->email = 'ronan@email.com';
-        $user->password = Hash::make('secret');
-        $user->save();
-        $user->roles()->attach($role_user);
 
-        $profile = new Profile();
-        $profile->bio = $faker->paragraph(3);
-        $profile->dob = $faker->date('Y-m-d', '2003-01-01');
-        $profile->location = 'Louth';
-        $profile->user_id = $user->id;
-        $profile->gender_id = Gender::all()->random(1)->first()->id;
-        $profile->sign_id = Sign::all()->random(1)->first()->id;
-        $profile->photo_id = null;
-        $profile->save();
-
-
-
-
-
-        for ($i = 1; $i <=3; $i++) {
-          $User = User::factory()->create();
-          $admin->roles()->attach($role_admin);
-
-        }
-
-        for ($i = 1; $i <=15; $i++) {
+        for ($i = 1; $i <=100; $i++) {
           $genders = Gender::all();
           $totalNumGenders = $genders->count();
           $signs = Sign::all();
@@ -79,13 +57,13 @@ class UserSeeder extends Seeder
           $profile->photo_id = null;
           $profile->save();
 
-          $numSigns = random_int(1, $totalNumSigns);
+          $numSigns = random_int(1, $totalNumSigns/3);
           for($j = 0; $j != $numSigns; $j++){
             $signs = $signs->shuffle();
             $sign = $signs->pop();
             $profile->signs()->attach($sign->id);
           }
-          $numGenders = random_int(1, $totalNumGenders);
+          $numGenders = random_int(1, $totalNumGenders/2);
           for($j = 0; $j != $numGenders; $j++){
             $genders = $genders->shuffle();
             $gender = $genders->pop();
@@ -93,14 +71,5 @@ class UserSeeder extends Seeder
           }
         }
 
-
-
-        // for ($i = 1; $i <=30; $i++) {
-        //   $User = User::factory()->create();
-        //   $user->roles()->attach($role_user);
-        //   $customer = Customer::factory()->create([]
-        //   'user_id' => $user->id,
-        // ]);
-        // }
     }
 }

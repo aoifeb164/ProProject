@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:46:11+00:00
-# @Last modified time: 2021-01-14T12:00:34+00:00
+# @Last modified time: 2021-03-10T16:04:42+00:00
 
 
 
@@ -23,8 +23,8 @@ class CreateProfileRelationshipTable extends Migration
             $table->bigInteger('relationship_id')->unsigned();
             $table->bigInteger('profile_id')->unsigned();
             $table->timestamps();
-            $table->foreign('relationship_id')->references('id')->on('relationships')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('profile_id')->references('id')->on('profiles')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('relationship_id')->references('id')->on('relationships')->onDelete('cascade');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
         });
     }
 

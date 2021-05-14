@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-05T16:23:56+00:00
-# @Last modified time: 2021-01-08T09:59:40+00:00
+# @Last modified time: 2021-03-09T16:35:37+00:00
 
 
 
@@ -8,6 +8,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -31,7 +32,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' =>  Hash::make('secret'), // password
             'remember_token' => Str::random(10),
         ];
     }

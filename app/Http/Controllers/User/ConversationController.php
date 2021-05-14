@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T11:52:08+00:00
-# @Last modified time: 2021-02-25T16:37:53+00:00
+# @Last modified time: 2021-05-13T17:48:40+01:00
 
 
 
@@ -40,22 +40,22 @@ class ConversationController extends Controller
       //when requesting the index page display the conversations index and get all the conversations from the conversations table
       public function index()
       {
-        // $user = Auth::user();
-      $conversations = Conversation::all();
-      // $conversations = $user->profile->started();
-      // $conversations = $user->profile->joined();
-      return view('user.conversations.index', [
-     'conversations' => $conversations
-      ]);
+      $user = Auth::user();
+      // $conversations = Conversation::all();
+      $profiles = Profile::all();
+      $joined = $user->profile->joined;
+      $started = $user->profile->started;
+      $matches_sent = $user->profile->matches_sent;
+      $matches_recieved = $user->profile->matches_recieved;
+    //  $conversations = $user->profile->started()->orderBy('id', 'asc')->paginate(8);
 
-      // $user = Auth::user();
-      //
-      // //display only the patient who is logged in visits and order by date
-      // $visits = $user->patient->visits()->orderBy('date', 'asc')->paginate(8);
-      //
-      // return view('patient.visits.index', [
-      //   'visits' => $visits
-      // ]);
+      return view('user.conversations.index', [
+        'joined' => $joined,
+        'started' =>$started,
+        'profiles' =>$profiles,
+        'matches_sent' => $matches_sent,
+        'matches_recieved' => $matches_recieved
+      ]);
 
     }
 
@@ -68,17 +68,21 @@ class ConversationController extends Controller
      //when on the add conversation page display the conversations create form page
     public function create()
     {
-      $users = User::all();
+      $user = Auth::user();
       $profiles = Profile::all();
       $conversations = Conversation::all();
       $messages = Message::all();
+      $matches_sent = $user->profile->matches_sent;
+      $matches_recieved = $user->profile->matches_recieved;
 
       return view('user.conversations.create', [
-      'users'=> $users,
-      'profiles'=> $profiles,
+        'profiles' =>$profiles,
       'conversations'=> $conversations,
-      'messages' => $messages
+      'messages' => $messages,
+      'matches_sent' => $matches_sent,
+      'matches_recieved' => $matches_recieved
     ]);
+      return redirect()->route('user.conversations.index');
     }
 
     /**
@@ -93,23 +97,21 @@ class ConversationController extends Controller
     {
       $request->validate([
         'title' => 'required|max:191',
-        'sender_id' => 'required',
         'recipient_id' => 'required',
 
         'message' => 'required',
-        'sender_id'=>'required'
       ]);
 
       $conversation = new Conversation();
       $conversation->title = $request->input('title');
-      $conversation->sender_id = $request->input('sender_id');
+      $conversation->sender_id = Auth::user()->profile->id;
       $conversation->recipient_id = $request->input('recipient_id');
       $conversation->save();
 
       $message = new Message();
       $message->message = $request->input('message');
       $message->conversation_id = $conversation->id;
-      $message->sender_id = $request->input('sender_id');
+      $message->sender_id =  Auth::user()->profile->id;
       $message->save();
 
       return redirect()->route('user.conversations.index');
@@ -135,19 +137,6 @@ class ConversationController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-     //when requesting to edit a conversation display the conversation edit page and get the conversation by id from the conversations table
-    public function edit($id)
-    {
-
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -155,18 +144,6 @@ class ConversationController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //when updating a new conversation the fields are validated by making sure they have inputed and they are using correct information format
-    public function update(Request $request, $id)
-    {
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     //when deleting a conversation get them by id in the conversations table and redirect back to conversation index page
     public function destroy(Request $request, $id)

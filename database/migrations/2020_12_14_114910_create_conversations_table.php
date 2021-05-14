@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-12-14T11:49:11+00:00
-# @Last modified time: 2020-12-14T12:31:51+00:00
+# @Last modified time: 2021-03-26T17:12:59+00:00
 
 
 
@@ -24,8 +24,8 @@ class CreateConversationsTable extends Migration
               $table->unsignedBigInteger('sender_id');
               $table->unsignedBigInteger('recipient_id');
               $table->timestamps();
-              $table->foreign('sender_id')->references('id')->on('profiles');
-              $table->foreign('recipient_id')->references('id')->on('profiles');
+              $table->foreign('sender_id')->references('id')->on('profiles')->onDelete('cascade');;
+              $table->foreign('recipient_id')->references('id')->on('profiles')->onDelete('cascade');;
         });
     }
 

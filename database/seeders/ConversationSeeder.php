@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-14T12:23:42+00:00
-# @Last modified time: 2021-01-29T10:16:53+00:00
+# @Last modified time: 2021-03-10T13:59:18+00:00
 
 
 
@@ -23,7 +23,7 @@ class ConversationSeeder extends Seeder
 
       $faker = \Faker\Factory::create();
 
-      $numConversations = rand(10,20);
+      $numConversations = rand(100,150);
       for ($j = 0; $j != $numConversations; $j++){
         $conversation = new Conversation();
         $conversation->title = $faker->realText(20);
@@ -37,7 +37,7 @@ class ConversationSeeder extends Seeder
         $numMessages = rand(1,5);
 
         for ($i = 0; $i != $numMessages; $i++){
-          $numParagraphs = rand(1,5);
+          $numParagraphs = rand(2,5);
           $message = new message();
           $message->message = $faker->paragraph($numParagraphs);
           $message->Conversation_id = $conversation->id;
