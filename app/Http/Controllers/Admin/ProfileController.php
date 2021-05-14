@@ -8,15 +8,14 @@
 namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-// use Illuminate\Http\Request;
-//calling the paient, user and insurance company models
+use Illuminate\Http\Request;
+use DB;
+
 use App\Models\Profile;
 use App\Models\Sign;
 use App\Models\Gender;
 use App\Models\User;
-use App\Models\InsuranceCompany;
-use Request;
-use DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -38,11 +37,16 @@ class ProfileController extends Controller
      */
 
       //when requesting the index page display the profiles index and get all the profiles from the profiles table
-      public function index()
+      public function index(Request $request)
       {
       $profiles = Profile::all();
+      $genders = Gender::all();
+      $signs = sign::all();
       return view('admin.profiles.index', [
-     'profiles' => $profiles
+     'profiles' => $profiles,
+     'genders' => $genders,
+     'signs' => $signs,
+     'request' => $request
       ]);
 
     }
@@ -99,14 +103,15 @@ class ProfileController extends Controller
      //when requesting to edit a profile display the profile edit page and get the profile by id from the profiles table
     public function edit($id)
     {
+      $user = Auth::user();
       //find the profile by id
       $profile = Profile::findOrFail($id);
       $genders = Gender::all();
       $signs = Sign::all();
       return view('admin.profiles.edit', [
         'profile' => $profile,
-        'gender_id' => $genders,
-        'sign_id' => $signs
+        'genders' => $genders,
+        'signs' => $signs
       ]);
     }
 
@@ -121,7 +126,33 @@ class ProfileController extends Controller
      //when updating a new profile the fields are validated by making sure they have inputed and they are using correct information format
     public function update(Request $request, $id)
     {
+      $user = Auth::user();
+      $profile = Profile::findOrFail($id);
 
+
+      $request->validate([
+      'name' => 'required|max:191',
+      'email' => 'required|max:191|unique:users,email,'.$profile->user_id,
+      'bio' => 'required|max:191',
+      'location' => 'required|max:191',
+      'gender_id' => 'required|max:191',
+      'sign_id' => 'required|max:191'
+
+    ]);
+
+    $profile->bio = $request->input('bio');
+    $profile->location = $request->input('location');
+    $profile->gender_id = $request->input('gender_id');
+    $profile->sign_id = $request->input('sign_id');
+    $profile->save();
+
+    $user = User::findOrFail($profile->user_id);
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->save();
+
+
+    return redirect()->route('admin.profiles.index');
     }
 
     /**
@@ -134,6 +165,7 @@ class ProfileController extends Controller
     //when deleting a profile get them by id in the profiles table and redirect back to profile index page
     public function destroy(Request $request, $id)
     {
+        $user = Auth::user();
         $profile = Profile::findOrFail($id);
         $profile->delete();
 
@@ -142,35 +174,55 @@ class ProfileController extends Controller
         return redirect()->route('admin.profiles.index');
     }
 
-    public function search(){
-      $q = Request::input('q');
-      $users = [];
+
+    public function search(Request $request){
+
+        // dd($request);
+        $q = $request->input('q');
+
+        $gender_id = $request->input('gender_id');
+        $sign_id = $request->input('sign_id');
+
+          $query = DB::table('profiles')->select('profiles.id')
+                                        ->leftJoin('users','users.id','=','profiles.user_id')
+                                        ->leftJoin('user_role','users.id','=','user_role.user_id')
+                                        ->leftJoin('roles','roles.id','=','user_role.role_id')
+                                        ->where('roles.name','user');
+
+
+        if($gender_id != "0"){
+          $query = $query->where('profiles.gender_id', '=',  $gender_id );
+        }
+        if($sign_id != "0"){
+          $query = $query->where('profiles.sign_id', '=',  $sign_id );
+        }
+        if($q != ""){
+          $query = $query->where('users.name', 'LIKE', '%' .$q . '%')
+                         ->orWhere('users.email', 'LIKE', '%' .$q . '%');
+        }
+
+        $profiles = $query->get();
+
+        $ids = $profiles->map(function ($profile) {
+          return $profile->id;
+        });
+
+        $profiles = Profile::find($ids);
+        $genders = Gender::all();
+        $signs = Sign::all();
 
 
 
 
+        return view('admin.profiles.index',[
+          "profiles" => $profiles,
+          "q" => $q,
+          'genders' => $genders,
+          'signs' => $signs,
+          'request' => $request
+        ]);
+
+    } //end of search function
 
 
-      if($q != ' '){
-        $users = DB::table('users')
-      ->leftJoin('profiles','users.id','=','profiles.user_id')
-      ->leftJoin('user_role','users.id','=','user_role.user_id')
-      ->leftJoin('roles','roles.id','=','user_role.role_id')
-      ->where('roles.name','user')
-      ->get();
-
-        $users = User::where('name', 'LIKE', '%' .$q . '%')
-                                ->orWhere('email', 'LIKE', '%' .$q . '%')
-                                ->get();
-
-
-
-      }
-
-      return view('welcome',[
-        "users" => $users,
-        "query" => $q
-      ]);
-
-    }
 }

@@ -32,7 +32,6 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/about', [PageController::class, 'about'])->name('about');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -42,8 +41,8 @@ Route::get('/user/home', [UserHomeController::class, 'index'])->name('user.home'
 
 Route::get('/admin/profiles', [AdminProfileController::class, 'index'])->name('admin.profiles.index');
 Route::get('/admin/profiles/{id}', [AdminProfileController::class, 'show'])->name('admin.profiles.show');
-// Route::get('/admin/profiles/{id}/edit', [AdminProfileController::class, 'edit'])->name('admin.profiles.edit');
-// Route::put('/admin/profiles{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
+Route::get('/admin/profiles/{id}/edit', [AdminProfileController::class, 'edit'])->name('admin.profiles.edit');
+Route::put('/admin/profiles{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
 Route::delete('/admin/profiles/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profiles.destroy');
 
 Route::get('/user/profiles', [UserProfileController::class, 'show'])->name('user.profiles.show');

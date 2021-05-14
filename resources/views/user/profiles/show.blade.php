@@ -15,7 +15,7 @@
                 <div class="text-center">
                     <td>
                         <h3 style="padding-top:40px;">{{ $profile->user->name }}</h3>
-                        
+
                     </td>
                 </div>
 
