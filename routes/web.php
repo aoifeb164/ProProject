@@ -64,4 +64,5 @@ Route::get('/user/conversations', [UserConversationController::class, 'index'])-
 Route::post('/user/messages/store', [UserConversationController::class, 'store'])->name('user.messages.store');
 
 Route::get('/user/messages/{id}', [UserMessageController::class, 'index'])->name('user.messages.index');
-// Route::get('/user/messages/{id}', [UserConversationController::class, 'index'])->name('user.messages.show');
+
+Route::post('/search',[AdminProfileController::class,'search'])->name('search');
