@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-03T10:21:46+00:00
-# @Last modified time: 2021-05-13T17:55:54+01:00
+# @Last modified time: 2021-05-14T13:28:37+01:00
 
 //use App\User;
 use Illuminate\Support\Facades\Request;
@@ -46,17 +46,6 @@ Route::get('/admin/profiles/{id}', [AdminProfileController::class, 'show'])->nam
 // Route::put('/admin/profiles{id}', [AdminProfileController::class, 'update'])->name('admin.profiles.update');
 Route::delete('/admin/profiles/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profiles.destroy');
 
-<<<<<<< HEAD
-//Route::get('/admin/viewprofile', [AdminProfileController::class, 'index'])->name('admin.profiles.viewprofile');
-
-Route::post('/search',[AdminProfileController::class,'search'])->name('search');
-// Route::get('/', [PageController::class, 'defaultProfile'])->name('defaultProfile');
-
-//
-// Route::post('/search',function(){
-//
-// });
-=======
 Route::get('/user/profiles', [UserProfileController::class, 'show'])->name('user.profiles.show');
 Route::get('/user/profiles/{id}', [UserProfileController::class, 'display'])->name('user.profiles.home.show');
 Route::put('/user/profiles', [UserProfileController::class, 'update'])->name('user.profiles.update');
@@ -77,4 +66,3 @@ Route::post('/user/messages/store', [UserConversationController::class, 'store']
 
 Route::get('/user/messages/{id}', [UserMessageController::class, 'index'])->name('user.messages.index');
 // Route::get('/user/messages/{id}', [UserConversationController::class, 'index'])->name('user.messages.show');
->>>>>>> aoife
