@@ -35,8 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <a class="nav-link" href="{{ route('admin.profiles.index') }}">{{ __('Profiles') }}</a>
-                              {{-- <a class="nav-link" href="{{ route('admin.searchProfiles') }}">{{ __('Search') }}</a> --}}
-                        <a class="nav-link" href="{{ route('user.conversations.index') }}">{{ __('Inbox') }}</a>
+
 
 
 
